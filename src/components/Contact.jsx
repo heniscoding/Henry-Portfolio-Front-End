@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
+import { FaEnvelope, FaLinkedin } from "react-icons/fa"; // Import icons
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,37 +17,60 @@ const Contact = () => {
     e.preventDefault();
     emailjs
       .send(
-        'service_i5hmohu', // Your EmailJS Service ID
-        'template_d2z873w', // Your EmailJS Template ID
+        "service_i5hmohu", // Your EmailJS Service ID
+        "template_d2z873w", // Your EmailJS Template ID
         {
-          to_name: 'Your Name', // Replace with your name
-          from_name: formData.name, // Sender's name from the form
-          email: formData.email, // Sender's email from the form
-          message: formData.message, // Message from the form
+          to_name: "Your Name",
+          from_name: formData.name,
+          email: formData.email,
+          message: formData.message,
         },
-        'dTheL8ujYAZSJN7ic' // Your EmailJS Public Key
+        "dTheL8ujYAZSJN7ic" // Your EmailJS Public Key
       )
       .then(
         (response) => {
-          alert('Message sent successfully!');
-          setFormData({ name: '', email: '', message: '' }); // Clear the form
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" });
         },
         (error) => {
-          console.error('EmailJS Error:', error); // Log error for debugging
-          alert('Failed to send message. Please try again.');
+          console.error("EmailJS Error:", error);
+          alert("Failed to send message. Please try again.");
         }
       );
   };
-  
+
   return (
     <section
       id="contact"
-      className="h-screen flex flex-col items-center justify-center bg-gray-300 text-gray-800"
+      className="py-50 bg-gray-900 text-gray-100 flex flex-col items-center justify-center px-6"
     >
-      <h2 className="text-4xl font-bold mb-6">Contact Me</h2>
+      <h3 className="mb-3 text-1lg md:text-2xl text-gray-300 font-extrabold mb-10 animate-fadeIn">
+        Contact<span className="text-custom-light-orange"> Me</span>
+      </h3>
+      <p className="my-6 text-sm md:text-base leading-relaxed text-gray-200 text-center animate-fadeIn delay-200">
+        Interested in getting a project off the ground or fancy collaborating?
+      </p>
+
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center justify-center mb-6">
+        <a
+          href="mailto:henryalderslade@gmail.com"
+          className="flex items-center gap-2 text-custom-orange hover:text-blue-500 transition justify-center"
+        >
+          <FaEnvelope /> henryalderslade@gmail.com
+        </a>
+        <a
+          href="https://www.linkedin.com/in/henry-alderslade-4b798755/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-custom-orange hover:text-blue-500 transition justify-center"
+        >
+          <FaLinkedin /> LinkedIn Profile
+        </a>
+      </div> */}
+
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 w-full max-w-md"
+        className="flex flex-col gap-6 w-full max-w-lg"
       >
         <input
           type="text"
@@ -54,7 +78,7 @@ const Contact = () => {
           placeholder="Your Name"
           value={formData.name}
           onChange={handleChange}
-          className="border rounded-lg p-2"
+          className="bg-gray-800 text-gray-100 border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
           required
         />
         <input
@@ -63,7 +87,7 @@ const Contact = () => {
           placeholder="Your Email"
           value={formData.email}
           onChange={handleChange}
-          className="border rounded-lg p-2"
+          className="bg-gray-800 text-gray-100 border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
           required
         />
         <textarea
@@ -71,13 +95,13 @@ const Contact = () => {
           placeholder="Your Message"
           value={formData.message}
           onChange={handleChange}
-          className="border rounded-lg p-2"
+          className="bg-gray-800 text-gray-100 border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
           rows="5"
           required
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="px-4 py-2 bg-custom-green rounded-none text-xs md:text-xs text-gray-100 px-6 py-3 uppercase font-bold tracking-wide hover:bg-blue-600 focus:ring-4 focus:ring-blue-700 focus:outline-none"
         >
           Send Message
         </button>
