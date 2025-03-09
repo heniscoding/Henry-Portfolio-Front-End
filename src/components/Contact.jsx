@@ -42,31 +42,31 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-50 bg-gray-900 text-gray-100 flex flex-col items-center justify-center px-6"
+      className="py-50 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-100 flex flex-col items-center justify-center px-6"
     >
       <h3 className="mb-3 text-1lg md:text-2xl text-gray-300 font-extrabold mb-10 animate-fadeIn">
-        Contact<span className="text-custom-light-orange"> Me</span>
+        Get In<span className="text-custom-light-orange"> Contact</span>
       </h3>
-      <p className="my-6 text-sm md:text-base leading-relaxed text-gray-200 text-center animate-fadeIn delay-200">
-        Interested in getting a project off the ground or fancy collaborating?
+      <p className="my-6 text-sm leading-relaxed text-gray-200 text-center animate-fadeIn delay-200">
+        Interested in getting a project off the ground or collaborating on something interesting?
       </p>
 
-      {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center justify-center mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center justify-center mb-6">
         <a
           href="mailto:henryalderslade@gmail.com"
-          className="flex items-center gap-2 text-custom-orange hover:text-blue-500 transition justify-center"
+          className="flex items-center gap-2 text-custom-light-orange hover:text-blue-500 transition justify-center"
         >
-          <FaEnvelope /> henryalderslade@gmail.com
+          <FaEnvelope /> Email
         </a>
         <a
           href="https://www.linkedin.com/in/henry-alderslade-4b798755/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-custom-orange hover:text-blue-500 transition justify-center"
+          className="flex items-center gap-2 text-custom-light-orange hover:text-blue-500 transition justify-center"
         >
-          <FaLinkedin /> LinkedIn Profile
+          <FaLinkedin /> LinkedIn
         </a>
-      </div> */}
+      </div>
 
       <form
         onSubmit={handleSubmit}
@@ -78,7 +78,7 @@ const Contact = () => {
           placeholder="Your Name"
           value={formData.name}
           onChange={handleChange}
-          className="bg-gray-800 text-gray-100 border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
+          className="bg-gray-200 text-gray-100 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
           required
         />
         <input
@@ -87,7 +87,7 @@ const Contact = () => {
           placeholder="Your Email"
           value={formData.email}
           onChange={handleChange}
-          className="bg-gray-800 text-gray-100 border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
+          className="bg-gray-200 text-gray-100 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
           required
         />
         <textarea
@@ -95,13 +95,13 @@ const Contact = () => {
           placeholder="Your Message"
           value={formData.message}
           onChange={handleChange}
-          className="bg-gray-800 text-gray-100 border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
+          className="bg-gray-200 text-gray-100 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
           rows="5"
           required
         />
         <button
           type="submit"
-          className="px-4 py-2 bg-custom-green rounded-none text-xs md:text-xs text-gray-100 px-6 py-3 uppercase font-bold tracking-wide hover:bg-blue-600 focus:ring-4 focus:ring-blue-700 focus:outline-none"
+          className="px-4 py-2 bg-custom-light-orange rounded-none text-xs md:text-xs text-gray-700 px-6 py-3 uppercase font-bold tracking-wide hover:text-white hover:bg-[#caa10d] focus:ring-4 focus:ring-blue-700 focus:outline-none"
         >
           Send Message
         </button>
