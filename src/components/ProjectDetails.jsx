@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { fetchProjects } from "../services/api";
+import Contact from "../components/Contact"; // Adjust path as needed
+import Footer from "../components/Footer";   // Adjust path as needed
+import { Link } from "react-router-dom";
 
 const ProjectDetails = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [project, setProject] = useState(null);
 
   useEffect(() => {
@@ -21,44 +23,81 @@ const ProjectDetails = () => {
     loadProject();
   }, [id]);
 
-  if (!project) return <div>Loading...</div>;
+  if (!project) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-gray-600 text-sm">
+        Loading...
+      </div>
+    );
+  }
 
   return (
-    <div className="pt-20 px-8 bg-gray-100 min-h-screen">
-      <button
-        onClick={() => navigate(-1)}
-        className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        Back to Projects
-      </button>
-      <div className="bg-white p-6 shadow rounded-lg">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-64 object-cover rounded-md"
-        />
-        <h1 className="text-4xl font-bold mt-4">{project.title}</h1>
-        <p className="text-gray-600 mt-4">{project.description}</p>
-        <div className="flex flex-wrap gap-2 mt-4">
-          {project.techStack.map((tech, index) => (
-            <span
-              key={index}
-              className="px-2 py-1 bg-gray-200 text-sm rounded-md"
-            >
-              {tech}
-            </span>
-          ))}
+    <>
+      <section className="relative pt-24 pb-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 flex flex-col items-center justify-center px-6">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
+
+        <div className="max-w-3xl w-full mx-auto">
+          <Link to="/" state={{ scrollTo: "projects" }}>
+            <button className="mt-4 px-4 py-2 bg-[#41B06E] text-gray-200 text-xs font-semibold rounded-none hover:text-white hover:bg-[#2c824e] transition-all duration-300">
+              ← Back to Projects
+            </button>
+          </Link>
+
+          <div className="bg-white shadow-xl rounded-lg overflow-hidden mt-6">
+            <div className="w-full h-64 sm:h-80 md:h-96 overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="p-6 text-center">
+              <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
+                {project.title}
+              </h1>
+              <p className="text-gray-700 leading-relaxed text-sm">
+                {project.description}
+              </p>
+
+              <div className="mt-6">
+                <h2 className="text-lg font-semibold text-gray-800 mb-2">
+                  Tech Stack
+                </h2>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {project.techStack.map((tech, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 bg-gray-200 text-sm rounded-full font-medium text-gray-700"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="mt-4 px-4 py-2 bg-[#41B06E] text-gray-200 text-xs font-semibold rounded-none hover:text-white hover:bg-[#2c824e] transition-all duration-300">
+                    🔗 Visit Project
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block mt-4 text-blue-500 hover:text-blue-700"
-        >
-          Visit Project
-        </a>
-      </div>
-    </div>
+
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
+      </section>
+
+      {/* Contact + Footer below the project */}
+      <Contact />
+      <Footer />
+    </>
   );
 };
 

@@ -7,25 +7,47 @@ const Navbar = () => {
   const isHomePage = location.pathname === "/";
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
+
+  const navLinkClass =
+    "block md:inline-block text-sm text-[#e1b721] font-extrabold hover:text-gray-200 py-2 md:py-0 px-4 md:px-0 cursor-pointer";
+
+  const routerLinkClass =
+    "block md:inline-block text-sm text-[#e1b721] font-extrabold hover:text-gray-200 py-2 md:py-0 px-4 md:px-0 cursor-pointer";
 
   return (
     <nav className="fixed top-0 w-full bg-gray-900 text-gray-200 py-2 shadow-md z-50">
       <div className="container mx-auto flex justify-between items-center px-4">
-        {/* Logo on the Left */}
+        {/* Logo */}
         <div>
-          <RouterLink to="/">
-            <img
-              src="/logo/Henry-white-logo.png"
-              alt="Henry Alderslade Logo"
-              className="h-[60px] w-auto" 
-            />
-          </RouterLink>
+          {isHomePage ? (
+            <ScrollLink
+              to="hero"
+              smooth={true}
+              duration={500}
+              offset={-60}
+              onClick={closeMenu}
+              className="cursor-pointer"
+            >
+              <img
+                src="/logo/Henry-white-logo.png"
+                alt="Henry Alderslade Logo"
+                className="h-[60px] w-auto"
+              />
+            </ScrollLink>
+          ) : (
+            <RouterLink to="/" state={{ scrollTo: "hero" }} onClick={closeMenu}>
+              <img
+                src="/logo/Henry-white-logo.png"
+                alt="Henry Alderslade Logo"
+                className="h-[60px] w-auto"
+              />
+            </RouterLink>
+          )}
         </div>
 
-        {/* Hamburger Icon for Mobile */}
+        {/* Mobile Hamburger */}
         <button
           onClick={toggleMenu}
           className="md:hidden bg-transparent hover:bg-transparent p-0 focus:outline-none focus:ring-0"
@@ -46,7 +68,7 @@ const Navbar = () => {
           </svg>
         </button>
 
-        {/* Menu Items on the Right */}
+        {/* Menu Items */}
         <div
           className={`${
             isOpen ? "block" : "hidden"
@@ -54,75 +76,31 @@ const Navbar = () => {
         >
           {isHomePage ? (
             <>
-              <ScrollLink
-                to="hero"
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-60}
-                activeClass="text-custom-orange"
-                className="block md:inline-block text-sm text-[#e1b721] font-extrabold hover:text-gray-200 py-2 md:py-0 px-4 md:px-0 cursor-pointer"
-              >
+              <ScrollLink to="hero" smooth duration={500} offset={-60} onClick={closeMenu} className={navLinkClass}>
                 Home
               </ScrollLink>
-              <ScrollLink
-                to="about"
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-60}
-                activeClass="text-custom-orange"
-                className="block md:inline-block text-sm text-[#e1b721] font-extrabold hover:text-gray-200 py-2 md:py-0 px-4 md:px-0 cursor-pointer"
-              >
+              <ScrollLink to="about" smooth duration={500} offset={-60} onClick={closeMenu} className={navLinkClass}>
                 About
               </ScrollLink>
-              <ScrollLink
-                to="projects"
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-60}
-                activeClass="text-custom-orange"
-                className="block md:inline-block text-sm text-[#e1b721] font-extrabold hover:text-gray-200 py-2 md:py-0 px-4 md:px-0 cursor-pointer"
-              >
+              <ScrollLink to="projects" smooth duration={500} offset={-60} onClick={closeMenu} className={navLinkClass}>
                 Projects
               </ScrollLink>
-              <ScrollLink
-                to="contact"
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-60}
-                activeClass="text-custom-orange"
-                className="block md:inline-block text-sm text-[#e1b721] font-extrabold hover:text-gray-200 py-2 md:py-0 px-4 md:px-0 cursor-pointer"
-              >
+              <ScrollLink to="contact" smooth duration={500} offset={-60} onClick={closeMenu} className={navLinkClass}>
                 Contact
               </ScrollLink>
             </>
           ) : (
             <>
-              <RouterLink
-                to="/"
-                className="block md:inline-block text-gray-200 font-extrabold hover:text-gray-200 py-2 md:py-0 px-4 md:px-0"
-              >
+              <RouterLink to="/" state={{ scrollTo: "hero" }} onClick={closeMenu} className={routerLinkClass}>
                 Home
               </RouterLink>
-              <RouterLink
-                to="/#about"
-                className="block md:inline-block text-gray-200 font-extrabold hover:text-gray-200 py-2 md:py-0 px-4 md:px-0"
-              >
+              <RouterLink to="/" state={{ scrollTo: "about" }} onClick={closeMenu} className={routerLinkClass}>
                 About
               </RouterLink>
-              <RouterLink
-                to="/#projects"
-                className="block md:inline-block text-gray-200 font-extrabold hover:text-gray-200 py-2 md:py-0 px-4 md:px-0"
-              >
+              <RouterLink to="/" state={{ scrollTo: "projects" }} onClick={closeMenu} className={routerLinkClass}>
                 Projects
               </RouterLink>
-              <RouterLink
-                to="/#contact"
-                className="block md:inline-block text-gray-200 font-extrabold hover:text-gray-200 py-2 md:py-0 px-4 md:px-0"
-              >
+              <RouterLink to="/" state={{ scrollTo: "contact" }} onClick={closeMenu} className={routerLinkClass}>
                 Contact
               </RouterLink>
             </>
