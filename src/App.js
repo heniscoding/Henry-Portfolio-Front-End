@@ -14,6 +14,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import ProjectDetails from "./components/ProjectDetails";
 import Footer from "./components/Footer";
+import PhotoIndex from "./components/PhotoIndex";
 
 // Scroll to section when hash or state.scrollTo exists
 const ScrollToSection = () => {
@@ -66,6 +67,7 @@ const AppRoutes = () => {
     <Routes location={location} key={location.pathname + location.hash}>
       <Route path="/" element={<Home />} />
       <Route path="/projects/:slug" element={<ProjectDetails />} />
+      <Route path="/photo-index" element={<PhotoIndex />} /> 
     </Routes>
   );
 };
