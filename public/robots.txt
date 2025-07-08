@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://henryalderslade.com/sitemap.xml
+Sitemap: https://henryalderslade.com/image-sitemap.xml
