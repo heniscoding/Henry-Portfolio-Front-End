@@ -48,7 +48,8 @@ const Contact = () => {
         Get In<span className="text-custom-light-orange"> Contact</span>
       </h3>
       <p className="my-6 text-sm leading-relaxed text-gray-200 text-center animate-fadeIn delay-200">
-        Interested in getting a project off the ground or collaborating on something interesting?
+        Interested in getting a project off the ground or collaborating on
+        something interesting?
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center justify-center mb-6">
@@ -78,24 +79,26 @@ const Contact = () => {
           placeholder="Your Name"
           value={formData.name}
           onChange={handleChange}
-          className="bg-gray-200 text-gray-100 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
+          className="bg-gray-200 text-gray-800 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
           required
         />
+
         <input
           type="email"
           name="email"
           placeholder="Your Email"
           value={formData.email}
           onChange={handleChange}
-          className="bg-gray-200 text-gray-100 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
+          className="bg-gray-200 text-gray-800 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
           required
         />
+
         <textarea
           name="message"
           placeholder="Your Message"
           value={formData.message}
           onChange={handleChange}
-          className="bg-gray-200 text-gray-100 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
+          className="bg-gray-200 text-gray-800 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
           rows="5"
           required
         />

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { fetchProjects } from "../services/api";
 import Contact from "../components/Contact"; // Adjust path as needed
-import Footer from "../components/Footer";   // Adjust path as needed
+import Footer from "../components/Footer"; // Adjust path as needed
 import { Link } from "react-router-dom";
 
 const ProjectDetails = () => {
@@ -33,6 +34,21 @@ const ProjectDetails = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{project.title} | Henry Alderslade</title>
+        <meta name="description" content={project.description?.slice(0, 155)} />
+        <meta property="og:title" content={project.title} />
+        <meta property="og:description" content={project.description} />
+        <meta property="og:image" content={project.image} />
+        <meta
+          property="og:url"
+          content={`https://yourdomain.com/projects/${
+            project.slug || project._id
+          }`}
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       <section className="relative pt-24 pb-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 flex flex-col items-center justify-center px-6">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
 

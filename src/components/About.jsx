@@ -27,7 +27,7 @@ const About = () => {
             {/* <h2 className="text-1xl md:text-2xl text-gray-900 font-extrabold mb-10 animate-fadeIn">
               The <span className="text-[#41B06E] font-extrabold">Details</span>
             </h2> */}
-            <p className="text-sm leading-relaxed text-gray-900 animate-fadeIn delay-200">
+            <p className="text-md leading-relaxed text-gray-900 animate-fadeIn delay-200">
               Hi! I'm <span className="font-extrabold">Henry</span>, a seasoned
               freelance software developer with a passion for crafting sleek,{" "}
               <span className="font-extrabold">user-focused</span>, and highly

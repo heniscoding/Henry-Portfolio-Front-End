@@ -24,7 +24,7 @@ const Projects = () => {
       className="py-20 bg-gradient-to-b from-gray-100 via-gray-100 to-gray-100"
     >
       <div className="max-w-3xl w-full mx-auto px-6">
-        <h3 className="mb-10 text-1lg md:text-2xl text-gray-600 text-center font-extrabold mb-10 animate-fadeIn">
+        <h3 className="mb-10 text-1lg md:text-2xl text-gray-600 text-center font-extrabold animate-fadeIn">
           Recent <span className="text-[#41B06E]">Work</span>
         </h3>
         <p className="mb-10 text-sm leading-relaxed text-gray-800 text-center animate-fadeIn delay-200">
@@ -38,7 +38,7 @@ const Projects = () => {
           {projects.map((project) => (
             <div
               key={project._id}
-              className="flex flex-col bg-white text-gray-100 shadow-lg hover:scale-105 transition-transform duration-300"
+              className="h-full flex flex-col justify-between bg-white shadow-lg hover:scale-105 transition-transform duration-300"
             >
               {/* Image */}
               <img
@@ -47,19 +47,24 @@ const Projects = () => {
                 className="w-full h-40 object-cover rounded-t-md"
               />
 
-              {/* Content Container with Padding */}
-              <div className="p-4">
-                <h3 className="text-sm text-gray-600 font-bold mt-4">
-                  {project.title}
-                </h3>
-                <p className="text-xs text-gray-600 mt-2">
-                  {project.description}
-                </p>
-                <Link to={`/projects/${project._id}`} className="mt-4">
-                  <button className="mt-4 px-4 py-2 bg-[#41B06E] text-gray-200 text-xs font-semibold rounded-none hover:text-white hover:bg-[#2c824e] transition-all duration-300">
-                    View Project
-                  </button>
-                </Link>
+              {/* Content */}
+              <div className="flex flex-col flex-grow p-4">
+                <div>
+                  <h3 className="text-sm text-gray-600 font-bold">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs text-gray-600 mt-2">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div className="mt-auto pt-4">
+                  <Link to={`/projects/${project._id}`}>
+                    <button className="w-full px-4 py-2 bg-[#41B06E] text-gray-200 text-xs font-semibold rounded-none hover:text-white hover:bg-[#2c824e] transition-all duration-300">
+                      View Project
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
