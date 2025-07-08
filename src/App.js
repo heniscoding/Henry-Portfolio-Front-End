@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 import React, { useLayoutEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -44,6 +44,14 @@ const ScrollToSection = () => {
 
 const Home = () => (
   <>
+    <Helmet>
+      <title>Henry Alderslade | Freelance Software Developer</title>
+      <meta
+        name="description"
+        content="Henry is a freelance software developer who builds sleek, user-friendly web apps with a focus on performance, design, and great user experience."
+      />
+    </Helmet>
+
     <Hero />
     <About />
     <Projects />
