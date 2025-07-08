@@ -59,7 +59,7 @@ const Projects = () => {
                 </div>
 
                 <div className="mt-auto pt-4">
-                  <Link to={`/projects/${project._id}`}>
+                  <Link to={`/projects/${project.slug}`}>
                     <button className="w-full px-4 py-2 bg-[#41B06E] text-gray-200 text-xs font-semibold rounded-none hover:text-white hover:bg-[#2c824e] transition-all duration-300">
                       View Project
                     </button>

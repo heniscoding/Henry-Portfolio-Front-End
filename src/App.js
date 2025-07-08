@@ -65,7 +65,7 @@ const AppRoutes = () => {
   return (
     <Routes location={location} key={location.pathname + location.hash}>
       <Route path="/" element={<Home />} />
-      <Route path="/projects/:id" element={<ProjectDetails />} />
+      <Route path="/projects/:slug" element={<ProjectDetails />} />
     </Routes>
   );
 };

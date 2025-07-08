@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { fetchProjects } from "../services/api";
-import Contact from "../components/Contact"; // Adjust path as needed
-import Footer from "../components/Footer"; // Adjust path as needed
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
 const ProjectDetails = () => {
-  const { id } = useParams();
+  const { slug } = useParams(); // changed from `id` to `slug`
   const [project, setProject] = useState(null);
 
   useEffect(() => {
     const loadProject = async () => {
       try {
         const { data } = await fetchProjects();
-        const selectedProject = data.find((proj) => proj._id === id);
+        const selectedProject = data.find((proj) => proj.slug === slug); // match by slug
         setProject(selectedProject);
       } catch (err) {
         console.error(err);
@@ -22,7 +22,7 @@ const ProjectDetails = () => {
     };
 
     loadProject();
-  }, [id]);
+  }, [slug]);
 
   if (!project) {
     return (
@@ -42,9 +42,7 @@ const ProjectDetails = () => {
         <meta property="og:image" content={project.image} />
         <meta
           property="og:url"
-          content={`https://yourdomain.com/projects/${
-            project.slug || project._id
-          }`}
+          content={`https://henryalderslade.com/projects/${project.slug}`}
         />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -110,7 +108,6 @@ const ProjectDetails = () => {
         <div className="absolute bottom-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
       </section>
 
-      {/* Contact + Footer below the project */}
       <Contact />
       <Footer />
     </>
