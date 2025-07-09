@@ -79,105 +79,129 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-50 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-100 flex flex-col items-center justify-center px-6"
+      className="relative py-50 text-gray-100 flex flex-col items-center justify-center px-6 overflow-hidden"
     >
-      <h3 className="text-center text-gray-300 font-extrabold mb-6">
-        Get In<span className="text-custom-light-orange"> Contact</span>
-      </h3>
-      <p className="text-center text-gray-200 mb-8">
-        Interested in getting a project off the ground or collaborating on
-        something interesting?
-      </p>
+      {/* Light background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 block dark:hidden"
+        style={{
+          backgroundImage: "url('/data/tech-background-light.jpg')",
+          backgroundAttachment: "fixed",
+        }}
+      ></div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center justify-center mb-6">
-        <a
-          href="mailto:henryalderslade@gmail.com"
-          className="flex items-center gap-2 text-custom-light-orange hover:text-blue-500 transition justify-center"
+      {/* Dark background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 hidden dark:block"
+        style={{
+          backgroundImage: "url('/data/tech-background4.jpg')",
+          backgroundAttachment: "fixed",
+        }}
+      ></div>
+
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-white/80 dark:bg-black/70 z-0"></div>
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-4xl">
+        <h3 className="text-center text-gray-900 dark:text-gray-100 font-extrabold mb-6">
+          Get In<span className="text-custom-light-orange"> Contact</span>
+        </h3>
+        <p className="text-center text-gray-800 dark:text-gray-300 mb-8">
+          Interested in getting a project off the ground or collaborating on
+          something interesting?
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center justify-center mb-6">
+          <a
+            href="mailto:henryalderslade@gmail.com"
+            className="flex items-center gap-2 text-custom-light-orange hover:text-blue-500 transition justify-center"
+          >
+            <FaEnvelope /> Email
+          </a>
+          <a
+            href="https://www.linkedin.com/in/henry-alderslade-4b798755/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-custom-light-orange hover:text-blue-500 transition justify-center"
+          >
+            <FaLinkedin /> LinkedIn
+          </a>
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-6 w-full max-w-lg mx-auto"
         >
-          <FaEnvelope /> Email
-        </a>
-        <a
-          href="https://www.linkedin.com/in/henry-alderslade-4b798755/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-custom-light-orange hover:text-blue-500 transition justify-center"
-        >
-          <FaLinkedin /> LinkedIn
-        </a>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="bg-gray-200 text-gray-800 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="bg-gray-200 text-gray-800 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            value={formData.message}
+            onChange={handleChange}
+            className="bg-gray-200 text-gray-800 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
+            rows="5"
+            required
+          />
+          <button
+            type="submit"
+            className="btn-custom-orange px-4 py-2 text-sm uppercase font-bold tracking-wide focus:ring-4 focus:ring-blue-700 focus:outline-none transition-all duration-300 flex items-center justify-center"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <span className="flex items-center gap-2">
+                <svg
+                  className="animate-spin h-4 w-4 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v8z"
+                  ></path>
+                </svg>
+                Sending...
+              </span>
+            ) : (
+              "Send Message"
+            )}
+          </button>
+        </form>
+
+        {/* Toast Message */}
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast({ message: "", type: "" })}
+        />
       </div>
-
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-6 w-full max-w-lg"
-      >
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
-          className="bg-gray-200 text-gray-800 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          value={formData.email}
-          onChange={handleChange}
-          className="bg-gray-200 text-gray-800 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
-          required
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          value={formData.message}
-          onChange={handleChange}
-          className="bg-gray-200 text-gray-800 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
-          rows="5"
-          required
-        />
-        <button
-          type="submit"
-          className="btn-custom-orange px-4 py-2 text-sm uppercase font-bold tracking-wide focus:ring-4 focus:ring-blue-700 focus:outline-none transition-all duration-300 flex items-center justify-center"
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            <span className="flex items-center gap-2">
-              <svg
-                className="animate-spin h-4 w-4 text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8v8z"
-                ></path>
-              </svg>
-              Sending...
-            </span>
-          ) : (
-            "Send Message"
-          )}
-        </button>
-      </form>
-
-      {/* Toast Message */}
-      <Toast
-        message={toast.message}
-        type={toast.type}
-        onClose={() => setToast({ message: "", type: "" })}
-      />
     </section>
   );
 };

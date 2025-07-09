@@ -19,8 +19,6 @@ const About = () => {
         id="about"
         className="relative py-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 flex flex-col items-center px-6"
       >
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -69,12 +67,10 @@ const About = () => {
             <br />
             I’m not about buzzwords or bloated code — just clean, purposeful
             development that does what it’s supposed to do (and does it well).
-            Whether you’ve got a big idea or just need something fixed fast,
-            I’m up for it. Let’s make something cool together.
+            Whether you’ve got a big idea or just need something fixed fast, I’m
+            up for it. Let’s make something cool together.
           </p>
         </motion.div>
-
-        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
       </section>
 
       {/* Tech Stack Section */}
@@ -86,7 +82,7 @@ const About = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 block dark:hidden"
           style={{
-            backgroundImage: "url('/data/tech-background-light2.jpg')",
+            backgroundImage: "url('/data/tech-background-light3.jpg')",
             backgroundAttachment: "fixed",
           }}
         ></div>
@@ -122,7 +118,9 @@ const About = () => {
             className="mb-12 text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed"
           >
             I'm currently working with tools like{" "}
-            <span className="text-custom-light-orange font-semibold">React</span>
+            <span className="text-custom-light-orange font-semibold">
+              React
+            </span>
             ,{" "}
             <span className="text-custom-light-orange font-semibold">
               JavaScript
@@ -150,16 +148,48 @@ const About = () => {
             className="grid grid-cols-3 sm:grid-cols-5 gap-10"
           >
             {[
-              { icon: <FaReact className="text-blue-500 text-3xl" />, label: "React" },
-              { icon: <FaNodeJs className="text-green-500 text-3xl" />, label: "Node.js" },
-              { icon: <SiPostgresql className="text-blue-600 text-3xl" />, label: "PostgreSQL" },
-              { icon: <FaJs className="text-yellow-400 text-3xl" />, label: "JavaScript" },
-              { icon: <FaHtml5 className="text-orange-500 text-3xl" />, label: "HTML5" },
-              { icon: <FaCss3Alt className="text-blue-400 text-3xl" />, label: "CSS3" },
-              { icon: <MdOutlineDesignServices className="text-purple-500 text-3xl" />, label: "UX/UI" },
-              { icon: <FaWordpress className="text-blue-600 text-3xl" />, label: "WordPress" },
-              { icon: <SiExpress className="text-gray-500 text-3xl" />, label: "Express" },
-              { icon: <MdApi className="text-green-400 text-3xl" />, label: "REST APIs" },
+              {
+                icon: <FaReact className="text-blue-500 text-3xl" />,
+                label: "React",
+              },
+              {
+                icon: <FaNodeJs className="text-green-500 text-3xl" />,
+                label: "Node.js",
+              },
+              {
+                icon: <SiPostgresql className="text-blue-600 text-3xl" />,
+                label: "PostgreSQL",
+              },
+              {
+                icon: <FaJs className="text-yellow-400 text-3xl" />,
+                label: "JavaScript",
+              },
+              {
+                icon: <FaHtml5 className="text-orange-500 text-3xl" />,
+                label: "HTML5",
+              },
+              {
+                icon: <FaCss3Alt className="text-blue-400 text-3xl" />,
+                label: "CSS3",
+              },
+              {
+                icon: (
+                  <MdOutlineDesignServices className="text-purple-500 text-3xl" />
+                ),
+                label: "UX/UI",
+              },
+              {
+                icon: <FaWordpress className="text-blue-600 text-3xl" />,
+                label: "WordPress",
+              },
+              {
+                icon: <SiExpress className="text-gray-500 text-3xl" />,
+                label: "Express",
+              },
+              {
+                icon: <MdApi className="text-green-400 text-3xl" />,
+                label: "REST APIs",
+              },
             ].map(({ icon, label }, idx) => (
               <motion.div
                 key={idx}
@@ -171,7 +201,9 @@ const About = () => {
                 className="flex flex-col items-center gap-2"
               >
                 {icon}
-                <span className="text-sm text-gray-800 dark:text-gray-100">{label}</span>
+                <span className="text-sm text-gray-800 dark:text-gray-100">
+                  {label}
+                </span>
               </motion.div>
             ))}
           </motion.div>

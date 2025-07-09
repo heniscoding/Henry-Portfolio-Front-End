@@ -47,46 +47,61 @@ const ProjectDetails = () => {
         <meta property="og:type" content="website" />
       </Helmet>
 
-      <section className="relative pt-24 pb-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 px-6">
+      {/* Hero Section */}
+      <div className="relative w-full h-[40vh] sm:h-[45vh] md:h-[50vh] overflow-hidden pt-16">
+        {/* Background image */}
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover object-center"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 backdrop-blur-sm z-10" />
+
+        {/* Content inside hero */}
+        <div className="absolute inset-0 z-20 flex flex-col justify-between px-4 py-6 sm:py-8">
+          {/* Back Button - TOP LEFT inside image */}
+          <div className="w-full max-w-4xl mx-auto mt-16 px-4">
+            <motion.button
+              onClick={() => window.history.back()}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+              className="bg-black/40 backdrop-blur-sm px-3 py-1 rounded text-white text-sm font-semibold flex items-center gap-1 hover:text-[#41B06E] transition-colors duration-300"
+            >
+              <span className="text-lg">←</span> Back
+            </motion.button>
+          </div>
+
+          {/* Title - CENTERED */}
+          <div className="flex justify-center items-center flex-grow">
+            <div className="max-w-4xl w-full mx-auto text-center">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg"
+              >
+                {project.title}
+              </motion.h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Project Content */}
+      <section className="relative pt-16 pb-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 px-6">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
 
         <div className="max-w-4xl w-full mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-6"
-          >
-            <button
-              onClick={() => window.history.back()}
-              className="all-[unset] inline-flex items-center gap-1 text-sm text-gray-600 hover:text-[#41B06E] cursor-pointer transition-colors duration-300"
-            >
-              <span className="text-lg">←</span> Back to Home
-            </button>
-          </motion.div>
-
-          {/* Project card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="bg-white shadow-xl rounded-lg overflow-hidden"
           >
-            {/* Image */}
-            <div className="w-full h-64 sm:h-80 md:h-[28rem] overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Content */}
             <div className="p-6 text-center">
-              <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
-                {project.title}
-              </h1>
-
               <p className="text-gray-700 leading-relaxed text-sm md:text-base mb-6">
                 {project.description}
               </p>

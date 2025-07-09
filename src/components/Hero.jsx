@@ -25,7 +25,7 @@ const Hero = () => {
       ></div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-40 z-0 transition-all duration-500"></div>
+      <div className="absolute inset-0 bg-white bg-opacity-40 dark:bg-black dark:bg-opacity-40 z-0 transition-all duration-500"></div>
 
       {/* Content */}
       <div className="relative z-10 max-w-3xl text-gray-900 dark:text-gray-100">

@@ -3,8 +3,6 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="relative bg-gradient-to-r from-gray-800 to-gray-900 text-gray-100 py-6">
-    {/* Top Line */}
-    <div className="absolute top-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
         {/* Copyright Section */}
         <p className="text-sm">

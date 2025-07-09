@@ -10,9 +10,13 @@ const Navbar = () => {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme") || "light";
-    setTheme(storedTheme);
-    document.documentElement.classList.toggle("dark", storedTheme === "dark");
+    const storedTheme = localStorage.getItem("theme");
+    const preferredTheme = storedTheme || "dark"; // default to dark
+    setTheme(preferredTheme);
+    document.documentElement.classList.toggle(
+      "dark",
+      preferredTheme === "dark"
+    );
   }, []);
 
   const toggleTheme = () => {
