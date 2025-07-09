@@ -1,6 +1,30 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
-import { FaEnvelope, FaLinkedin } from "react-icons/fa"; // Import icons
+import { FaEnvelope, FaLinkedin } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+
+const Toast = ({ message, type, onClose }) => {
+  return (
+    <AnimatePresence>
+      {message && (
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }}
+          transition={{ duration: 0.3 }}
+          className={`fixed bottom-6 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded shadow-lg text-sm font-semibold z-50
+            ${
+              type === "success"
+                ? "bg-green-600 text-white"
+                : "bg-red-600 text-white"
+            }`}
+        >
+          {message}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +32,13 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [toast, setToast] = useState({ message: "", type: "" });
+
+  const showToast = (message, type = "success") => {
+    setToast({ message, type });
+    setTimeout(() => setToast({ message: "", type: "" }), 4000);
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -15,26 +46,32 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
     emailjs
       .send(
-        "service_i5hmohu", // Your EmailJS Service ID
-        "template_d2z873w", // Your EmailJS Template ID
+        "service_i5hmohu",
+        "template_d2z873w",
         {
           to_name: "Your Name",
           from_name: formData.name,
           email: formData.email,
           message: formData.message,
         },
-        "dTheL8ujYAZSJN7ic" // Your EmailJS Public Key
+        "dTheL8ujYAZSJN7ic"
       )
       .then(
-        (response) => {
-          alert("Message sent successfully!");
+        () => {
+          showToast(
+            "Thanks for reaching out! I'll be in contact soon.",
+            "success"
+          );
           setFormData({ name: "", email: "", message: "" });
+          setIsLoading(false);
         },
-        (error) => {
-          console.error("EmailJS Error:", error);
-          alert("Failed to send message. Please try again.");
+        () => {
+          showToast("Oops! Something went wrong. Please try again.", "error");
+          setIsLoading(false);
         }
       );
   };
@@ -44,10 +81,10 @@ const Contact = () => {
       id="contact"
       className="py-50 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-100 flex flex-col items-center justify-center px-6"
     >
-      <h3 className="mb-3 text-1lg md:text-2xl text-gray-300 font-extrabold mb-10 animate-fadeIn">
+      <h3 className="text-center text-gray-300 font-extrabold mb-6">
         Get In<span className="text-custom-light-orange"> Contact</span>
       </h3>
-      <p className="my-6 text-sm leading-relaxed text-gray-200 text-center animate-fadeIn delay-200">
+      <p className="text-center text-gray-200 mb-8">
         Interested in getting a project off the ground or collaborating on
         something interesting?
       </p>
@@ -82,7 +119,6 @@ const Contact = () => {
           className="bg-gray-200 text-gray-800 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
           required
         />
-
         <input
           type="email"
           name="email"
@@ -92,7 +128,6 @@ const Contact = () => {
           className="bg-gray-200 text-gray-800 rounded-none border border-gray-700 p-3 focus:outline-none focus:border-blue-500"
           required
         />
-
         <textarea
           name="message"
           placeholder="Your Message"
@@ -104,11 +139,45 @@ const Contact = () => {
         />
         <button
           type="submit"
-          className="px-4 py-2 bg-custom-light-orange rounded-none text-xs md:text-xs text-gray-700 px-6 py-3 uppercase font-bold tracking-wide hover:text-white hover:bg-[#caa10d] focus:ring-4 focus:ring-blue-700 focus:outline-none"
+          className="btn-custom-orange px-4 py-2 text-sm uppercase font-bold tracking-wide focus:ring-4 focus:ring-blue-700 focus:outline-none transition-all duration-300 flex items-center justify-center"
+          disabled={isLoading}
         >
-          Send Message
+          {isLoading ? (
+            <span className="flex items-center gap-2">
+              <svg
+                className="animate-spin h-4 w-4 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v8z"
+                ></path>
+              </svg>
+              Sending...
+            </span>
+          ) : (
+            "Send Message"
+          )}
         </button>
       </form>
+
+      {/* Toast Message */}
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        onClose={() => setToast({ message: "", type: "" })}
+      />
     </section>
   );
 };

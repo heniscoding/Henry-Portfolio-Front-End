@@ -6,35 +6,49 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative py-60 flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat text-gray-100 text-center px-4"
-      style={{
-        backgroundImage: "url('/data/tech-background4.jpg')",
-        backgroundAttachment: "fixed",
-      }}
+      className="relative py-60 flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat text-center px-4 transition-colors duration-500"
     >
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      {/* Background Images (light and dark) */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+        style={{
+          backgroundImage: "url('/data/tech-background-light.jpg')",
+          backgroundAttachment: "fixed",
+        }}
+      ></div>
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat dark:block hidden z-0"
+        style={{
+          backgroundImage: "url('/data/tech-background4.jpg')",
+          backgroundAttachment: "fixed",
+        }}
+      ></div>
 
-      {/* Main content */}
-      <div className="relative z-10 max-w-3xl">
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-40 z-0 transition-all duration-500"></div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-3xl text-gray-900 dark:text-gray-100">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-6xl font-extrabold leading-tight text-white drop-shadow-lg"
+          className="text-4xl md:text-6xl font-extrabold leading-tight text-black dark:text-white drop-shadow-lg"
         >
-          Henry
-          <span className="text-custom-light-orange"> Alderslade</span>
+          Henry{" "}
+          <span className="text-custom-light-orange drop-shadow-[0_1px_1px_rgba(0,0,0,0.4)] dark:drop-shadow-none transition duration-300">
+            Alderslade
+          </span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-lg md:text-xl mt-4 text-gray-300"
+          className="text-lg md:text-xl mt-4 text-gray-700 dark:text-gray-300"
         >
           <span>I’m a&nbsp;</span>
-          <span className="text-white font-semibold">
+          <span className="font-semibold text-black dark:text-white">
             <Typewriter
               words={[
                 "coder",

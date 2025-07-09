@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { SiPostgresql, SiExpress } from "react-icons/si";
 import { MdOutlineDesignServices, MdApi } from "react-icons/md";
+import { motion } from "framer-motion";
 
 const About = () => {
   return (
@@ -16,139 +17,164 @@ const About = () => {
       {/* About Section */}
       <section
         id="about"
-        className="relative pt-20 pb-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 flex flex-col items-center justify-center px-6"
+        className="relative py-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 flex flex-col items-center px-6"
       >
-        {/* Top Line */}
         <div className="absolute top-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
 
-        {/* Container with Max Width */}
-        <div className="max-w-3xl w-full mx-auto">
-          <div className="text-center">
-            {/* <h2 className="text-1xl md:text-2xl text-gray-900 font-extrabold mb-10 animate-fadeIn">
-              The <span className="text-[#41B06E] font-extrabold">Details</span>
-            </h2> */}
-            <p className="text-md leading-relaxed text-gray-900 animate-fadeIn delay-200">
-              Hi! I'm <span className="font-extrabold">Henry</span>, a seasoned
-              freelance software developer with a passion for crafting sleek,{" "}
-              <span className="font-extrabold">user-focused</span>, and highly
-              functional web applications. With expertise in modern technologies
-              like{" "}
-              <a
-                href="https://react.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 font-extrabold hover:underline"
-              >
-                React
-              </a>
-              ,{" "}
-              <a
-                href="https://nodejs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-green-600 font-extrabold hover:underline"
-              >
-                Node.js
-              </a>
-              , and{" "}
-              <a
-                href="https://www.mongodb.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-green-700 font-extrabold hover:underline"
-              >
-                MongoDB
-              </a>
-              , I pride myself on delivering innovative solutions that align
-              with the latest{" "}
-              <span className="font-extrabold">industry standards</span>. I'm
-              committed to{" "}
-              <span className="font-extrabold">continuous learning</span> and
-              growth, always eager to explore new tools and frameworks to
-              broaden my skillset and enhance the quality of my work. Let’s
-              collaborate to bring your ideas to life and create something truly{" "}
-              <span className="font-extrabold">exceptional</span>!
-            </p>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="max-w-3xl text-center"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">
+            <span className="text-custom-light-orange">About</span>{" "}
+            <span className="text-gray-900">Me</span>
+          </h2>
 
-        {/* Bottom Line */}
+          <p className="text-md md:text-lg leading-relaxed text-gray-800">
+            Hey, I’m <span className="font-bold">Henry</span> — a freelance
+            software developer who loves building smooth, user-friendly web apps
+            that actually make people’s lives easier. I work mostly with modern
+            tools like{" "}
+            <a
+              href="https://react.dev"
+              target="_blank"
+              rel="noreferrer"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              React
+            </a>
+            ,{" "}
+            <a
+              href="https://nodejs.org"
+              target="_blank"
+              rel="noreferrer"
+              className="text-green-600 font-semibold hover:underline"
+            >
+              Node.js
+            </a>
+            , and{" "}
+            <a
+              href="https://www.mongodb.com"
+              target="_blank"
+              rel="noreferrer"
+              className="text-green-700 font-semibold hover:underline"
+            >
+              MongoDB
+            </a>
+            , and I’m always tinkering with new tech just to see what’s
+            possible. <br />
+            <br />
+            I’m not about buzzwords or bloated code — just clean, purposeful
+            development that does what it’s supposed to do (and does it well).
+            Whether you’ve got a big idea or just need something fixed fast,
+            I’m up for it. Let’s make something cool together.
+          </p>
+        </motion.div>
+
         <div className="absolute bottom-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
       </section>
 
       {/* Tech Stack Section */}
       <section
         id="tech-stack"
-        className="relative pt-20 pb-20 flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat text-gray-100 text-center px-4"
-        style={{
-          backgroundImage: "url('/data/tech-background6.jpg')",
-          backgroundAttachment: "fixed", // Enables parallax effect
-        }}
+        className="relative py-20 text-center px-4 text-gray-900 dark:text-white transition-colors duration-500 overflow-hidden"
       >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        {/* Background Images (light and dark) */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 block dark:hidden"
+          style={{
+            backgroundImage: "url('/data/tech-background-light2.jpg')",
+            backgroundAttachment: "fixed",
+          }}
+        ></div>
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 hidden dark:block"
+          style={{
+            backgroundImage: "url('/data/tech-background6.jpg')",
+            backgroundAttachment: "fixed",
+          }}
+        ></div>
 
-        <div className="relative z-10">
-          <h3 className="text-1lg md:text-2xl text-gray-300 font-extrabold mb-10 animate-fadeIn">
-            Tech <span className="text-custom-light-orange">Stack</span>
-          </h3>
-          <p className="mb-20 text-sm text-gray-300 leading-relaxed text-center max-w-3xl animate-fadeIn delay-200">
-            Recently I've been using tools like{" "}
-            <span className="text-custom-light-orange">React</span>,{" "}
-            <span className="text-custom-light-orange">JavaScript</span>,{" "}
-            <span className="text-custom-light-orange">Node.js</span>, and{" "}
-            <span className="text-custom-light-orange">PostgreSQL</span>, among
-            others to build out software applications and websites. They allow
-            me to build dynamic, user-focused, and scalable applications with
-            clean and efficient code. I'm always excited to expand my expertise
-            by diving into new technologies and frameworks, ensuring I stay at
-            the forefront of modern development practices.
-          </p>
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-60 z-0"></div>
 
-          <div className="grid grid-cols-3 sm:grid-cols-5 gap-10 text-center">
-            <span className="flex flex-col items-center gap-2">
-              <FaReact className="text-blue-500 text-3xl" />
-              <span className="text-sm">React</span>
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.h3
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-2xl md:text-3xl font-bold mb-4"
+          >
+            <span className="text-gray-900 dark:text-white">Tech</span>{" "}
+            <span className="text-custom-light-orange">Stack</span>
+          </motion.h3>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-12 text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed"
+          >
+            I'm currently working with tools like{" "}
+            <span className="text-custom-light-orange font-semibold">React</span>
+            ,{" "}
+            <span className="text-custom-light-orange font-semibold">
+              JavaScript
             </span>
-            <span className="flex flex-col items-center gap-2">
-              <FaNodeJs className="text-green-500 text-3xl" />
-              <span className="text-sm">Node.js</span>
-            </span>
-            <span className="flex flex-col items-center gap-2">
-              <SiPostgresql className="text-blue-600 text-3xl" />
-              <span className="text-sm">PostgreSQL</span>
-            </span>
-            <span className="flex flex-col items-center gap-2">
-              <FaJs className="text-yellow-500 text-3xl" />
-              <span className="text-sm">JavaScript</span>
-            </span>
-            <span className="flex flex-col items-center gap-2">
-              <FaHtml5 className="text-orange-500 text-3xl" />
-              <span className="text-sm">HTML5</span>
-            </span>
-            <span className="flex flex-col items-center gap-2">
-              <FaCss3Alt className="text-blue-400 text-3xl" />
-              <span className="text-sm">CSS3</span>
-            </span>
-            <span className="flex flex-col items-center gap-2">
-              <MdOutlineDesignServices className="text-purple-500 text-3xl" />
-              <span className="text-sm">UX/UI</span>
-            </span>
-            <span className="flex flex-col items-center gap-2">
-              <FaWordpress className="text-blue-600 text-3xl" />
-              <span className="text-sm">WordPress</span>
-            </span>
-            {/* Express.js */}
-            <span className="flex flex-col items-center gap-2">
-              <SiExpress className="text-gray-400 text-3xl" />
-              <span className="text-sm">Express</span>
-            </span>
-            {/* REST APIs */}
-            <span className="flex flex-col items-center gap-2">
-              <MdApi className="text-green-400 text-3xl" />
-              <span className="text-sm">REST APIs</span>
-            </span>
-          </div>
+            ,{" "}
+            <span className="text-custom-light-orange font-semibold">
+              Node.js
+            </span>{" "}
+            and{" "}
+            <span className="text-custom-light-orange font-semibold">
+              PostgreSQL
+            </span>{" "}
+            to build scalable and user-first digital experiences.
+          </motion.p>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={{
+              visible: {
+                transition: { staggerChildren: 0.1 },
+              },
+            }}
+            viewport={{ once: true }}
+            className="grid grid-cols-3 sm:grid-cols-5 gap-10"
+          >
+            {[
+              { icon: <FaReact className="text-blue-500 text-3xl" />, label: "React" },
+              { icon: <FaNodeJs className="text-green-500 text-3xl" />, label: "Node.js" },
+              { icon: <SiPostgresql className="text-blue-600 text-3xl" />, label: "PostgreSQL" },
+              { icon: <FaJs className="text-yellow-400 text-3xl" />, label: "JavaScript" },
+              { icon: <FaHtml5 className="text-orange-500 text-3xl" />, label: "HTML5" },
+              { icon: <FaCss3Alt className="text-blue-400 text-3xl" />, label: "CSS3" },
+              { icon: <MdOutlineDesignServices className="text-purple-500 text-3xl" />, label: "UX/UI" },
+              { icon: <FaWordpress className="text-blue-600 text-3xl" />, label: "WordPress" },
+              { icon: <SiExpress className="text-gray-500 text-3xl" />, label: "Express" },
+              { icon: <MdApi className="text-green-400 text-3xl" />, label: "REST APIs" },
+            ].map(({ icon, label }, idx) => (
+              <motion.div
+                key={idx}
+                variants={{
+                  hidden: { opacity: 0, scale: 0.8 },
+                  visible: { opacity: 1, scale: 1 },
+                }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col items-center gap-2"
+              >
+                {icon}
+                <span className="text-sm text-gray-800 dark:text-gray-100">{label}</span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
     </>

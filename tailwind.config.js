@@ -1,4 +1,5 @@
 module.exports = {
+  darkMode: 'class',
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
@@ -6,7 +7,7 @@ module.exports = {
         'custom-orange': '#FF8343',
         'custom-green' : '#4bc260',
         'custom-pink' : '#a756f5',
-        'custom-light-orange' : '#e1b721',
+        'custom-light-orange' : '#d09200',
       },
       keyframes: {
         fadeIn: {
