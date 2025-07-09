@@ -62,7 +62,7 @@ const ProjectDetails = () => {
         {/* Content inside hero */}
         <div className="absolute inset-0 z-20 flex flex-col justify-between px-4 py-6 sm:py-8">
           {/* Back Button - TOP LEFT inside image */}
-          <div className="w-full max-w-4xl mx-auto mt-16 px-4">
+          <div className="w-full max-w-3xl mx-auto mt-16">
             <motion.button
               onClick={() => window.history.back()}
               initial={{ opacity: 0, y: -10 }}
@@ -76,7 +76,7 @@ const ProjectDetails = () => {
 
           {/* Title - CENTERED */}
           <div className="flex justify-center items-center flex-grow">
-            <div className="max-w-4xl w-full mx-auto text-center">
+            <div className="max-w-3xl w-full mx-auto text-center">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -94,7 +94,7 @@ const ProjectDetails = () => {
       <section className="relative pt-16 pb-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 px-6">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
 
-        <div className="max-w-4xl w-full mx-auto">
+        <div className="max-w-3xl w-full mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

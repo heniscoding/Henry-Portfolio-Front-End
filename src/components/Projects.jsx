@@ -24,7 +24,7 @@ const Projects = () => {
       id="projects"
       className="py-20 bg-gradient-to-b from-gray-100 via-gray-100 to-gray-100"
     >
-      <div className="max-w-6xl w-full mx-auto px-6">
+      <div className="max-w-3xl w-full mx-auto px-6">
         {/* Heading */}
         <motion.h3
           initial={{ opacity: 0, y: -20 }}

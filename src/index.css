@@ -93,6 +93,9 @@ textarea {
   h3 {
     @apply text-xl md:text-3xl;
   }
+  p {
+    @apply text-base md:text-[1.0rem];
+  }
 }
 
 /* Section Padding */
@@ -140,5 +143,14 @@ section {
 
   .dark .btn-custom-orange:hover {
     background-color: #e09d00; /* Dark hover – e.g., yellow-500 */
+  }
+}
+
+@layer utilities {
+  .md\:text-custom-base {
+    @media (min-width: 768px) {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
   }
 }

@@ -31,7 +31,7 @@ const About = () => {
             <span className="text-gray-900">Me</span>
           </h2>
 
-          <p className="text-md md:text-lg leading-relaxed text-gray-800">
+          <p className="text-md md:text-custom-base leading-relaxed text-gray-800">
             Hey, I’m <span className="font-bold">Henry</span> — a freelance
             software developer who loves building smooth, user-friendly web apps
             that actually make people’s lives easier. I work mostly with modern
@@ -98,7 +98,7 @@ const About = () => {
         <div className="absolute inset-0 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-60 z-0"></div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative z-10 max-w-3xl mx-auto">
           <motion.h3
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}

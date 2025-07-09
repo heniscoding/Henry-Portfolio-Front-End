@@ -103,7 +103,7 @@ const Contact = () => {
       <div className="absolute inset-0 bg-white/80 dark:bg-black/70 z-0"></div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-4xl">
+      <div className="relative z-10 w-full max-w-3xl">
         <h3 className="text-center text-gray-900 dark:text-gray-100 font-extrabold mb-6">
           Get In<span className="text-custom-light-orange"> Contact</span>
         </h3>
@@ -131,7 +131,7 @@ const Contact = () => {
 
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-6 w-full max-w-lg mx-auto"
+          className="flex flex-col gap-6 w-full px-6 mx-auto"
         >
           <input
             type="text"
