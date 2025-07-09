@@ -48,7 +48,7 @@ const ProjectDetails = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <div className="relative w-full h-[40vh] sm:h-[45vh] md:h-[50vh] overflow-hidden pt-16">
+      <div className="relative w-full h-[40vh] sm:h-[45vh] md:h-[40vh] overflow-hidden pt-16">
         {/* Background image */}
         <img
           src={project.image}
