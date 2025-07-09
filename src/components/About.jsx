@@ -95,7 +95,7 @@ const About = () => {
         ></div>
 
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-60 z-0"></div>
+        <div className="absolute inset-0 bg-white bg-opacity-20 dark:bg-black dark:bg-opacity-60 z-0"></div>
 
         {/* Content */}
         <div className="relative z-10 max-w-3xl mx-auto">
@@ -115,7 +115,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             viewport={{ once: true }}
-            className="mb-12 text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed"
+            className="mb-12 md:text-base text-gray-800 dark:text-gray-300 leading-relaxed"
           >
             I'm currently working with tools like{" "}
             <span className="text-custom-light-orange font-semibold">

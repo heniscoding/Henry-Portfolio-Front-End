@@ -102,7 +102,7 @@ const ProjectDetails = () => {
             className="bg-white shadow-xl rounded-lg overflow-hidden"
           >
             <div className="p-6 text-center">
-              <p className="text-gray-700 leading-relaxed text-sm md:text-base mb-6">
+              <p className="text-gray-700 leading-relaxed md:text-base mb-6">
                 {project.description}
               </p>
 

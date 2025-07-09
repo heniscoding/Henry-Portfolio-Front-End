@@ -43,7 +43,7 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.5 }}
           viewport={{ once: true }}
-          className="mb-12 text-center text-sm md:text-base text-gray-700 max-w-3xl mx-auto"
+          className="mb-12 text-center md:text-base text-gray-700 max-w-3xl mx-auto"
         >
           Here’s a little showcase of what I’ve been up to lately — projects
           that mix creativity, code, and caffeine. I’ve been building things for
