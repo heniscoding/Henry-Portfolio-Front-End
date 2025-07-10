@@ -45,6 +45,30 @@ const ProjectDetails = () => {
           content={`https://henryalderslade.com/projects/${project.slug}`}
         />
         <meta property="og:type" content="website" />
+
+        {/* JSON-LD Schema for this project */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            name: project.title,
+            description: project.description,
+            url: `https://henryalderslade.com/projects/${project.slug}`,
+            image: project.image,
+            author: {
+              "@type": "Person",
+              name: "Henry Alderslade",
+              url: "https://henryalderslade.com",
+            },
+            creator: {
+              "@type": "Person",
+              name: "Henry Alderslade",
+            },
+            inLanguage: "en",
+            keywords: project.techStack?.join(", "),
+            datePublished: project.publishedDate || "2024-01-01",
+          })}
+        </script>
       </Helmet>
 
       {/* Hero Section */}
