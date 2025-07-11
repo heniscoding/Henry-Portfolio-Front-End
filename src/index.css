@@ -12,7 +12,7 @@ body {
   @apply bg-gray-100 text-gray-900 antialiased transition-colors duration-300;
 }
 
-[data-theme="dark"] body {
+.dark body {
   @apply bg-gray-900 text-gray-100;
 }
 
@@ -26,12 +26,12 @@ h6 {
   @apply font-bold text-gray-800;
 }
 
-[data-theme="dark"] h1,
-[data-theme="dark"] h2,
-[data-theme="dark"] h3,
-[data-theme="dark"] h4,
-[data-theme="dark"] h5,
-[data-theme="dark"] h6 {
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
   @apply text-gray-100;
 }
 
@@ -77,8 +77,8 @@ textarea {
   @apply border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-200 transition-colors duration-200;
 }
 
-[data-theme="dark"] input,
-[data-theme="dark"] textarea {
+.dark input,
+.dark textarea {
   @apply bg-gray-800 text-gray-100 border-gray-700;
 }
 
@@ -128,8 +128,6 @@ section {
     color: #d07f00; /* Dark mode version */
   }
 
-
-
   .btn-custom-orange {
     background-color: #31aeb5; /* Light theme */
   }
@@ -154,3 +152,12 @@ section {
     }
   }
 }
+
+@layer utilities {
+  @media (max-width: 1299px) {
+    .hide-arrows-lg {
+      display: none !important;
+    }
+  }
+}
+

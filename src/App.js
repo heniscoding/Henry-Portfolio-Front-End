@@ -10,7 +10,7 @@ import {
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Projects from "./components/Projects";
+import ProjectsCarousel from "./components/ProjectsCarousel";
 import Contact from "./components/Contact";
 import ProjectDetails from "./components/ProjectDetails";
 import Footer from "./components/Footer";
@@ -33,7 +33,7 @@ const Home = () => {
 
       <Hero />
       <About />
-      <Projects />
+      <ProjectsCarousel />
       <Contact />
       <Footer />
     </>

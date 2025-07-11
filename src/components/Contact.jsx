@@ -162,7 +162,7 @@ const Contact = () => {
           />
           <button
             type="submit"
-            className="btn-custom-orange px-4 py-2 text-sm uppercase font-bold tracking-wide focus:ring-4 focus:ring-blue-700 focus:outline-none transition-all duration-300 flex items-center justify-center"
+            className="btn-custom-orange px-4 py-2 text-sm rounded text-white dark:text-gray-900 uppercase font-bold tracking-wide focus:ring-4 focus:ring-blue-700 focus:outline-none transition-all duration-300 flex items-center justify-center"
             disabled={isLoading}
           >
             {isLoading ? (

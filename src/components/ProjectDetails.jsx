@@ -161,7 +161,10 @@ const ProjectDetails = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <button className="mt-2 px-5 py-2 bg-[#41B06E] text-white text-sm font-semibold rounded hover:bg-[#2c824e] transition duration-300">
+                    <button className="mt-2 px-5 py-2 btn-custom-orange 
+  text-white dark:text-gray-900 
+  text-sm font-semibold rounded 
+  hover:shadow-md transition duration-300">
                       🔗 Visit Project
                     </button>
                   </a>
