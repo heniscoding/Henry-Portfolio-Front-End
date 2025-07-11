@@ -125,14 +125,14 @@ section {
   }
 
   .dark .text-custom-light-orange {
-    color: #d07f00; /* Dark mode version */
+    color: #cc5500; /* Dark mode version */
   }
 
   .btn-custom-orange {
     background-color: #31aeb5; /* Light theme */
   }
   .dark .btn-custom-orange {
-    background-color: #d07f00; /* Dark theme – e.g., Tailwind's yellow-400 */
+    background-color: #cc5500; /* Dark theme – e.g., Tailwind's yellow-400 */
   }
 
   .btn-custom-orange:hover {
@@ -140,7 +140,7 @@ section {
   }
 
   .dark .btn-custom-orange:hover {
-    background-color: #e09d00; /* Dark hover – e.g., yellow-500 */
+    background-color: #b34700; /* Dark hover – e.g., yellow-500 */
   }
 }
 

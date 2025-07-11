@@ -19,6 +19,11 @@ const About = () => {
         id="about"
         className="relative py-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 flex flex-col items-center px-6"
       >
+        <div
+          id="about-anchor"
+          className="absolute -top-24"
+          aria-hidden="true"
+        ></div>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,15 +32,15 @@ const About = () => {
           className="max-w-3xl text-center"
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-6">
-            <span className="text-custom-light-orange">About</span>{" "}
-            <span className="text-gray-900">Me</span>
+            <span className="text-custom-light-orange">Maker</span>{" "}
+            <span className="text-gray-600">Bio</span>
           </h2>
 
           <p className="text-md md:text-custom-base leading-relaxed text-gray-800">
-            Hey, I’m <span className="font-bold">Henry</span> — a freelance
-            software developer who loves building smooth, user-friendly web apps
-            that actually make people’s lives easier. I work mostly with modern
-            tools like{" "}
+            I’m a freelance developer with a maker’s mindset and a soft spot for
+            projects that solve real problems — simply, beautifully, and without
+            unnecessary noise. <br />
+            <br />I work mostly with modern tools like{" "}
             <a
               href="https://react.dev"
               target="_blank"
@@ -62,13 +67,18 @@ const About = () => {
             >
               MongoDB
             </a>
-            , and I’m always tinkering with new tech just to see what’s
-            possible. <br />
+            — but tools are just that: tools. What matters is building things
+            that are intuitive to use and genuinely useful. I like digging into
+            the details, experimenting with ideas, and turning rough concepts
+            into smooth, working realities. <br />
             <br />
-            I’m not about buzzwords or bloated code — just clean, purposeful
-            development that does what it’s supposed to do (and does it well).
-            Whether you’ve got a big idea or just need something fixed fast, I’m
-            up for it. Let’s make something cool together.
+            Outside the screen, I chase fresh air, fast bikes, crispy chicken
+            wings, and the kind of countryside escapes that reset your brain. I
+            believe good ideas need room to breathe — and sometimes that means
+            stepping away from the desk and into the world. <br />
+            <br />
+            If you’ve got a project with purpose (or just a hunch that could
+            turn into something cool), let’s talk.
           </p>
         </motion.div>
       </section>
@@ -99,16 +109,16 @@ const About = () => {
 
         {/* Content */}
         <div className="relative z-10 max-w-3xl mx-auto">
-          <motion.h3
+          <motion.h2
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-3xl font-bold mb-4"
+            className="text-2xl md:text-3xl font-bold mb-6"
           >
             <span className="text-gray-900 dark:text-white">Tech</span>{" "}
             <span className="text-custom-light-orange">Stack</span>
-          </motion.h3>
+          </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -117,7 +127,7 @@ const About = () => {
             viewport={{ once: true }}
             className="mb-12 md:text-base text-gray-800 dark:text-gray-300 leading-relaxed"
           >
-            I'm currently working with tools like{" "}
+            Right now, I’m building with{" "}
             <span className="text-custom-light-orange font-semibold">
               React
             </span>
@@ -128,69 +138,90 @@ const About = () => {
             ,{" "}
             <span className="text-custom-light-orange font-semibold">
               Node.js
-            </span>{" "}
-            and{" "}
+            </span>
+            , and{" "}
             <span className="text-custom-light-orange font-semibold">
               PostgreSQL
             </span>{" "}
-            to build scalable and user-first digital experiences.
+            — creating digital experiences that are fast, purposeful, and
+            actually enjoyable to use. I’m drawn to projects that mix logic with
+            creativity — things that work well and feel even better.
           </motion.p>
 
           <motion.div
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             variants={{
               visible: {
                 transition: { staggerChildren: 0.1 },
               },
             }}
             viewport={{ once: true }}
-            className="grid grid-cols-3 sm:grid-cols-5 gap-10"
+            className="mt-20 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
           >
             {[
               {
-                icon: <FaReact className="text-blue-500 text-3xl" />,
+                icon: <FaReact />,
                 label: "React",
+                color: "text-blue-500",
+                description: "Frontend library for building user interfaces",
               },
               {
-                icon: <FaNodeJs className="text-green-500 text-3xl" />,
+                icon: <FaNodeJs />,
                 label: "Node.js",
+                color: "text-green-500",
+                description: "JavaScript runtime for backend development",
               },
               {
-                icon: <SiPostgresql className="text-blue-600 text-3xl" />,
+                icon: <SiPostgresql />,
                 label: "PostgreSQL",
+                color: "text-blue-600",
+                description: "Powerful open-source SQL database",
               },
               {
-                icon: <FaJs className="text-yellow-400 text-3xl" />,
+                icon: <FaJs />,
                 label: "JavaScript",
+                color: "text-yellow-400",
+                description: "Core language of the web",
               },
               {
-                icon: <FaHtml5 className="text-orange-500 text-3xl" />,
+                icon: <FaHtml5 />,
                 label: "HTML5",
+                color: "text-orange-500",
+                description: "Markup language for structuring content",
               },
               {
-                icon: <FaCss3Alt className="text-blue-400 text-3xl" />,
+                icon: <FaCss3Alt />,
                 label: "CSS3",
+                color: "text-blue-400",
+                description: "Styling language for layouts and design",
               },
               {
-                icon: (
-                  <MdOutlineDesignServices className="text-purple-500 text-3xl" />
-                ),
+                icon: <MdOutlineDesignServices />,
                 label: "UX/UI",
+                color: "text-purple-500",
+                description: "User interface and experience design principles",
               },
               {
-                icon: <FaWordpress className="text-blue-600 text-3xl" />,
+                icon: <FaWordpress />,
                 label: "WordPress",
+                color: "text-blue-600",
+                description: "CMS for building and managing websites",
               },
               {
-                icon: <SiExpress className="text-gray-500 text-3xl" />,
+                icon: <SiExpress />,
                 label: "Express",
+                color: "text-gray-500",
+                description: "Backend framework for Node.js",
               },
               {
-                icon: <MdApi className="text-green-400 text-3xl" />,
+                icon: <MdApi />,
                 label: "REST APIs",
+                color: "text-green-400",
+                description: "Designing and consuming RESTful services",
               },
-            ].map(({ icon, label }, idx) => (
+            ].map(({ icon, label, color, description }, idx) => (
               <motion.div
                 key={idx}
                 variants={{
@@ -198,12 +229,24 @@ const About = () => {
                   visible: { opacity: 1, scale: 1 },
                 }}
                 transition={{ duration: 0.3 }}
-                className="flex flex-col items-center gap-2"
+                className="relative group flex flex-col items-center gap-2 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
               >
-                {icon}
+                <motion.div
+                  whileHover={{ scale: 1.2, rotate: 3 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className={`${color} text-3xl`}
+                  aria-label={label}
+                >
+                  {icon}
+                </motion.div>
                 <span className="text-sm text-gray-800 dark:text-gray-100">
                   {label}
                 </span>
+
+                {/* Tooltip */}
+                <div className="absolute bottom-full mb-2 w-max max-w-[160px] px-2 py-1 text-xs text-white bg-gray-900 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10 text-center">
+                  {description}
+                </div>
               </motion.div>
             ))}
           </motion.div>

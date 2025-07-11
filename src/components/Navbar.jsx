@@ -36,7 +36,7 @@ const Navbar = () => {
   const closeMenu = () => setIsOpen(false);
 
   const navLinkClass = (extra = "") =>
-    `nav-link text-custom-light-orange block md:inline-block text-sm font-extrabold py-2 md:py-0 px-4 md:px-0 cursor-pointer 
+    `nav-link block md:inline-block text-sm font-extrabold py-2 md:py-0 px-4 md:px-0 cursor-pointer 
    hover:text-orange-600 dark:hover:text-yellow-300 ${extra}`;
 
   const routerLinkClass =

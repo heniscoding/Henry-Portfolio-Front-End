@@ -135,9 +135,9 @@ const ProjectDetails = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.4 }}
               >
-                <h2 className="text-lg font-semibold text-gray-800 mb-2">
+                <h3 className="text-lg font-semibold !text-gray-800 mb-2">
                   Tech Stack
-                </h2>
+                </h3>
                 <div className="flex flex-wrap justify-center gap-2 mb-6">
                   {project.techStack.map((tech, index) => (
                     <span
@@ -161,11 +161,8 @@ const ProjectDetails = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <button className="mt-2 px-5 py-2 btn-custom-orange 
-  text-white dark:text-gray-900 
-  text-sm font-semibold rounded 
-  hover:shadow-md transition duration-300">
-                      🔗 Visit Project
+                    <button className="mt-2 px-5 py-2 btn-custom-orange text-white text-sm font-semibold rounded hover:shadow-md transition duration-300">
+                    Visit Project
                     </button>
                   </a>
                 </motion.div>

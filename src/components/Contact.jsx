@@ -103,19 +103,18 @@ const Contact = () => {
       <div className="absolute inset-0 bg-white/80 dark:bg-black/70 z-0"></div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-3xl">
-        <h3 className="text-center text-gray-900 dark:text-gray-100 font-extrabold mb-6">
-          Get In<span className="text-custom-light-orange"> Contact</span>
-        </h3>
+      <div className="relative z-10 max-w-3xl mx-auto">
+        <h2 className="text-center text-2xl md:text-3xl font-bold mb-6">
+          Let’s<span className="text-custom-light-orange"> Chat</span>
+        </h2>
         <p className="text-center text-gray-800 dark:text-gray-300 mb-8">
-          Interested in getting a project off the ground or collaborating on
-          something interesting?
+          Looking for a creative brain with a technical backbone and a sense of humor? You know what to do.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center justify-center mb-6">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-6">
           <a
             href="mailto:henryalderslade@gmail.com"
-            className="flex items-center gap-2 text-custom-light-orange hover:text-blue-500 transition justify-center"
+            className="flex items-center gap-2 text-custom-light-orange transition"
           >
             <FaEnvelope /> Email
           </a>
@@ -123,7 +122,7 @@ const Contact = () => {
             href="https://www.linkedin.com/in/henry-alderslade-4b798755/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-custom-light-orange hover:text-blue-500 transition justify-center"
+            className="flex items-center gap-2 text-custom-light-orange transition"
           >
             <FaLinkedin /> LinkedIn
           </a>
@@ -162,7 +161,7 @@ const Contact = () => {
           />
           <button
             type="submit"
-            className="btn-custom-orange px-4 py-2 text-sm rounded text-white dark:text-gray-900 uppercase font-bold tracking-wide focus:ring-4 focus:ring-blue-700 focus:outline-none transition-all duration-300 flex items-center justify-center"
+            className="w-full px-3 py-1.5 text-sm font-medium text-white btn-custom-orange rounded active:scale-95 hover:shadow-md transition-all duration-300"
             disabled={isLoading}
           >
             {isLoading ? (

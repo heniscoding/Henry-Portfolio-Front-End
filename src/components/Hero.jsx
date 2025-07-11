@@ -1,6 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+import {
+  FaGithub,
+  FaFileDownload,
+  FaRocket,
+  FaInstagram,
+  FaChevronDown,
+} from "react-icons/fa";
 
 const Hero = () => {
   return (
@@ -8,7 +15,7 @@ const Hero = () => {
       id="hero"
       className="relative py-60 flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat text-center px-4 transition-colors duration-500"
     >
-      {/* Background Images (light and dark) */}
+      {/* Background Images */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{
@@ -25,7 +32,7 @@ const Hero = () => {
       ></div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-40 z-0 transition-all duration-500"></div>
+      <div className="absolute inset-0 bg-white bg-opacity-70 dark:bg-black dark:bg-opacity-60 z-0 transition-all duration-500"></div>
 
       {/* Content */}
       <div className="relative z-10 max-w-3xl text-gray-900 dark:text-gray-100">
@@ -45,10 +52,10 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-lg md:text-xl mt-4 text-gray-700 dark:text-gray-300"
+          className="text-xl md:text-2xl mt-10 mb-10 text-gray-700 dark:text-gray-300 font-medium"
         >
           <span>I’m a&nbsp;</span>
-          <span className="font-semibold text-black dark:text-white">
+          <span className="font-semibold text-black dark:text-white tracking-wide">
             <Typewriter
               words={[
                 "coder",
@@ -68,35 +75,63 @@ const Hero = () => {
           </span>
         </motion.p>
 
+        {/* Buttons */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.4 }}
-          className="mt-8 flex flex-col sm:flex-row sm:justify-center sm:items-center gap-4"
+          className="mt-10 flex flex-col sm:flex-row sm:justify-center sm:items-center gap-4"
         >
+          {/* View Work */}
           <a
             href="#projects"
-            className="px-4 py-2 bg-[#1679AB] text-white text-sm rounded hover:bg-[#12638b] transform hover:scale-105 transition duration-300"
+            className="group px-5 py-2 text-sm font-medium rounded bg-gradient-to-r from-blue-500 to-blue-700 text-white opacity-80 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
           >
+            <FaRocket className="transition-transform duration-300 group-hover:translate-x-1" />
             View Work
           </a>
+
+          {/* Download CV */}
           <a
             href="/data/Henry-Alderslade-CV-2024.pdf"
             download
-            className="px-4 py-2 bg-[#874CCC] text-white text-sm rounded hover:bg-[#6d3ca6] transform hover:scale-105 transition duration-300"
+            className="group px-5 py-2 text-sm font-medium rounded bg-gradient-to-r from-purple-500 to-purple-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
           >
+            <FaFileDownload className="transition-transform duration-300 group-hover:translate-y-1" />
             Download CV
           </a>
+
+          {/* GitHub */}
           <a
             href="https://github.com/heniscoding/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-[#41B06E] text-white text-sm rounded hover:bg-[#2c824e] transform hover:scale-105 transition duration-300"
+            className="group px-5 py-2 text-sm font-medium rounded bg-gradient-to-r from-emerald-500 to-emerald-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
           >
+            <FaGithub className="transition-transform duration-300 group-hover:rotate-3" />
             Visit GitHub
+          </a>
+
+          {/* Instagram */}
+          <a
+            href="https://instagram.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group px-5 py-2 text-sm font-medium rounded bg-gradient-to-r from-pink-500 to-pink-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
+          >
+            <FaInstagram className="transition-transform duration-300 group-hover:scale-105" />
+            Instagram
           </a>
         </motion.div>
       </div>
+
+      {/* Scroll Indicator */}
+      <a
+        href="#about-anchor"
+        className="absolute bottom-10 text-custom-light-orange hover:text-orange-600 transition-colors duration-300 animate-bounce"
+      >
+        <FaChevronDown size={24} />
+      </a>
     </section>
   );
 };

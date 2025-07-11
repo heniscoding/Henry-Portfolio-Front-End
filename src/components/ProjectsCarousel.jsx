@@ -48,23 +48,27 @@ const ProjectsCarousel = () => {
         className="max-w-3xl mx-auto text-center"
       >
         <h2 className="text-2xl md:text-3xl font-bold mb-6">
-          <span className="text-custom-light-orange">Recent</span>{" "}
-          <span className="text-gray-900">Work</span>
+          <span className="text-custom-light-orange">Build</span>{" "}
+          <span className="text-gray-900">Reel</span>
         </h2>
-        <p className="text-md md:text-custom-base leading-relaxed text-gray-800">
-          A few highlights from recent projects built with clean, focused code
-          and modern tools. Each one is built to be user-friendly,
-          purpose-driven, and enjoyable to use.
+        <p className="text-md md:text-custom-base leading-relaxed text-gray-800 mb-12">
+          Just a few highlights from things I’ve been building lately — clean
+          code, modern tools, and a sprinkle of love. Each project is designed
+          to be easy to use, fun to explore, and built with purpose.
         </p>
       </motion.div>
 
-      <div className="relative mt-16 max-w-5xl mx-auto">
+      <div className="relative max-w-5xl mx-auto">
         <div className="relative flex items-center">
           {projects.length >= 3 && (
             <button
               onClick={handlePrev}
               className="hidden xl:flex absolute z-10 items-center justify-center w-10 h-10 bg-white text-[#31aeb5] dark:text-[#d07f00] rounded-full shadow-md transition-colors duration-300 hover:bg-[#31aeb5] dark:hover:bg-[#d07f00] group"
-              style={{ top: "45%", left: "-52px", transform: "translateY(-50%)" }}
+              style={{
+                top: "45%",
+                left: "-52px",
+                transform: "translateY(-50%)",
+              }}
               aria-label="Previous Slide"
             >
               <span className="group-hover:text-white transition-colors duration-300">
@@ -107,8 +111,8 @@ const ProjectsCarousel = () => {
                     </div>
                     <div className="pt-3">
                       <Link to={`/projects/${project.slug || project._id}`}>
-                        <button className="w-full px-3 py-1.5 text-xs font-medium text-white dark:text-gray-900 btn-custom-orange rounded hover:shadow-md transition-all duration-300">
-                          View Project
+                        <button className="w-full px-3 py-1.5 text-sm font-medium text-white btn-custom-orange rounded active:scale-95 hover:shadow-md transition-all duration-300">
+                          View Project →
                         </button>
                       </Link>
                     </div>
