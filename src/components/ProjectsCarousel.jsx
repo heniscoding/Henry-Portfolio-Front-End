@@ -24,13 +24,13 @@ const ProjectsCarousel = () => {
   }, []);
 
   const handlePrev = useCallback(() => {
-    if (swiperRef && typeof swiperRef.slidePrev === "function") {
+    if (swiperRef && swiperRef.slidePrev) {
       swiperRef.slidePrev();
     }
   }, [swiperRef]);
 
   const handleNext = useCallback(() => {
-    if (swiperRef && typeof swiperRef.slideNext === "function") {
+    if (swiperRef && swiperRef.slideNext) {
       swiperRef.slideNext();
     }
   }, [swiperRef]);
@@ -58,26 +58,26 @@ const ProjectsCarousel = () => {
         </p>
       </motion.div>
 
-      {/* Carousel */}
       <div className="relative mt-16 max-w-5xl mx-auto">
         <div className="relative flex items-center">
-          {/* Left Arrow */}
-          <button
-            onClick={handlePrev}
-            className="hidden xl:flex absolute z-10 items-center justify-center w-10 h-10 bg-white text-[#31aeb5] dark:text-[#d07f00] rounded-full shadow-md transition-colors duration-300 hover:bg-[#31aeb5] dark:hover:bg-[#d07f00] group"
-            style={{ top: "45%", left: "-52px", transform: "translateY(-50%)" }}
-            aria-label="Previous Slide"
-          >
-            <span className="group-hover:text-white transition-colors duration-300">
-              ←
-            </span>
-          </button>
+          {projects.length >= 3 && (
+            <button
+              onClick={handlePrev}
+              className="hidden xl:flex absolute z-10 items-center justify-center w-10 h-10 bg-white text-[#31aeb5] dark:text-[#d07f00] rounded-full shadow-md transition-colors duration-300 hover:bg-[#31aeb5] dark:hover:bg-[#d07f00] group"
+              style={{ top: "45%", left: "-52px", transform: "translateY(-50%)" }}
+              aria-label="Previous Slide"
+            >
+              <span className="group-hover:text-white transition-colors duration-300">
+                ←
+              </span>
+            </button>
+          )}
 
           <Swiper
             modules={[Pagination, Autoplay]}
             spaceBetween={30}
             slidesPerView={1}
-            loop={true}
+            loop={projects.length >= 3}
             pagination={{ clickable: true }}
             autoplay={{ delay: 6000, disableOnInteraction: false }}
             breakpoints={{
@@ -85,10 +85,7 @@ const ProjectsCarousel = () => {
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
-            onSwiper={(swiper) => {
-              // wait for one animation frame to ensure buttons hook into initialized swiper
-              requestAnimationFrame(() => setSwiperRef(swiper));
-            }}
+            onSwiper={setSwiperRef}
             className="!pb-12 w-full"
           >
             {projects.map((project) => (
@@ -121,21 +118,22 @@ const ProjectsCarousel = () => {
             ))}
           </Swiper>
 
-          {/* Right Arrow */}
-          <button
-            onClick={handleNext}
-            className="hidden xl:flex absolute z-10 items-center justify-center w-10 h-10 bg-white text-[#31aeb5] dark:text-[#d07f00] rounded-full shadow-md transition-colors duration-300 hover:bg-[#31aeb5] dark:hover:bg-[#d07f00] group"
-            style={{
-              top: "45%",
-              right: "-52px",
-              transform: "translateY(-50%)",
-            }}
-            aria-label="Next Slide"
-          >
-            <span className="group-hover:text-white transition-colors duration-300">
-              →
-            </span>
-          </button>
+          {projects.length >= 3 && (
+            <button
+              onClick={handleNext}
+              className="hidden xl:flex absolute z-10 items-center justify-center w-10 h-10 bg-white text-[#31aeb5] dark:text-[#d07f00] rounded-full shadow-md transition-colors duration-300 hover:bg-[#31aeb5] dark:hover:bg-[#d07f00] group"
+              style={{
+                top: "45%",
+                right: "-52px",
+                transform: "translateY(-50%)",
+              }}
+              aria-label="Next Slide"
+            >
+              <span className="group-hover:text-white transition-colors duration-300">
+                →
+              </span>
+            </button>
+          )}
         </div>
       </div>
     </section>
