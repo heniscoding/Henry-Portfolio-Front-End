@@ -121,7 +121,7 @@ section {
 
 @layer utilities {
   .text-custom-light-orange {
-    color: #31aeb5; /* Light mode version */
+    color: #8f46bb; /* Light mode version */
   }
 
   .dark .text-custom-light-orange {
@@ -129,14 +129,14 @@ section {
   }
 
   .btn-custom-orange {
-    background-color: #31aeb5; /* Light theme */
+    background-color: #8f46bb; /* Light theme */
   }
   .dark .btn-custom-orange {
     background-color: #cc5500; /* Dark theme – e.g., Tailwind's yellow-400 */
   }
 
   .btn-custom-orange:hover {
-    background-color: #268a90; /* Light hover */
+    background-color: #7b3ca2; /* Light hover */
   }
 
   .dark .btn-custom-orange:hover {
