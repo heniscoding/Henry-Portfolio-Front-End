@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,11 +7,11 @@
 /* Custom Global Styles */
 html {
   scroll-behavior: smooth;
-  font-size: 100%; /* Ensures 1rem = 16px */
+  font-size: 100%;
 }
 
 body {
-  @apply bg-gray-100 text-gray-900 antialiased transition-colors duration-300;
+  @apply bg-gray-100 text-gray-900 antialiased transition-colors duration-300 font-sans;
 }
 
 .dark body {
@@ -23,7 +25,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-bold text-gray-800;
+  @apply font-bold text-gray-800 font-sans;
 }
 
 .dark h1,

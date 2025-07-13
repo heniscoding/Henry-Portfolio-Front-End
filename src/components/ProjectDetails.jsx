@@ -126,9 +126,18 @@ const ProjectDetails = () => {
             className="bg-white shadow-xl rounded-lg overflow-hidden"
           >
             <div className="p-6 text-center">
-              <p className="text-gray-700 leading-relaxed md:text-base mb-6">
-                {project.description}
-              </p>
+              <div className="mb-4 flex items-center justify-center gap-2">
+                <span className="h-[2px] w-8 bg-custom-light-orange rounded-full"></span>
+                <span className="uppercase tracking-wider text-sm md:text-base font-semibold text-gray-600">
+                  Project Summary
+                </span>
+                <span className="h-[2px] w-8 bg-custom-light-orange rounded-full"></span>
+              </div>
+              <div className="text-gray-700 text-sm md:text-base leading-relaxed mb-6 text-left space-y-4 font-sans max-w-prose mx-auto">
+                {project.description.split("\n\n").map((para, idx) => (
+                  <p key={idx}>{para}</p>
+                ))}
+              </div>
 
               <motion.div
                 initial={{ opacity: 0 }}
@@ -162,7 +171,7 @@ const ProjectDetails = () => {
                     rel="noopener noreferrer"
                   >
                     <button className="mt-2 px-5 py-2 btn-custom-orange text-white text-sm font-semibold rounded hover:shadow-md transition duration-300">
-                    Visit Project
+                      Visit Project
                     </button>
                   </a>
                 </motion.div>

@@ -5,9 +5,12 @@ module.exports = {
     extend: {
       colors: {
         'custom-orange': '#FF8343',
-        'custom-green' : '#4bc260',
-        'custom-pink' : '#a756f5',
-        'custom-light-orange' : '#d09200',
+        'custom-green': '#4bc260',
+        'custom-pink': '#a756f5',
+        'custom-light-orange': '#d09200',
+      },
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
       },
       keyframes: {
         fadeIn: {
@@ -23,6 +26,9 @@ module.exports = {
       },
       animation: {
         fadeIn: 'fadeIn 1s ease-out',
+      },
+      maxWidth: {
+        prose: '65ch', // Ideal for readable body content
       },
     },
   },
