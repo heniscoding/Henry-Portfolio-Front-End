@@ -11,6 +11,15 @@ const ProjectsCarousel = () => {
   const [projects, setProjects] = useState([]);
   const [swiperRef, setSwiperRef] = useState(null);
 
+  const buttonLabels = [
+    "Launch Project →",
+    "See the Work →",
+    "View Details →",
+    "Explore Build →",
+    "Check It Out →",
+    "Peek Inside →",
+  ];
+
   useEffect(() => {
     const loadProjects = async () => {
       try {
@@ -58,7 +67,7 @@ const ProjectsCarousel = () => {
         </p>
       </motion.div>
 
-      <div className="relative max-w-5xl mx-auto">
+      <div className="relative max-w-7xl mx-auto">
         <div className="relative flex items-center">
           {projects.length >= 3 && (
             <button
@@ -81,24 +90,26 @@ const ProjectsCarousel = () => {
             modules={[Pagination, Autoplay]}
             spaceBetween={30}
             slidesPerView={1}
-            loop={projects.length >= 3}
+            loop={projects.length >= 5}
             pagination={{ clickable: true }}
             autoplay={{ delay: 6000, disableOnInteraction: false }}
             breakpoints={{
               640: { slidesPerView: 1 },
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 4 },
+              1536: { slidesPerView: 5 },
             }}
             onSwiper={setSwiperRef}
             className="!pb-12 w-full"
           >
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <SwiperSlide key={project._id}>
-                <div className="bg-white shadow-md rounded-md transition duration-500 ease-in-out flex flex-col h-[300px]">
+                <div className="bg-white shadow-md rounded-md transition duration-500 ease-in-out flex flex-col h-[350px]">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-32 object-cover rounded-t-md"
+                    className="w-full h-40 object-cover rounded-t-md"
                   />
                   <div className="flex flex-col justify-between flex-grow p-3">
                     <div>
@@ -112,7 +123,7 @@ const ProjectsCarousel = () => {
                     <div className="pt-3">
                       <Link to={`/projects/${project.slug || project._id}`}>
                         <button className="w-full px-3 py-1.5 text-sm font-medium text-white btn-custom-orange rounded active:scale-95 hover:shadow-md transition-all duration-300">
-                          View Project →
+                          {buttonLabels[index % buttonLabels.length]}
                         </button>
                       </Link>
                     </div>

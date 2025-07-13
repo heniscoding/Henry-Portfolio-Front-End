@@ -45,7 +45,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 w-full bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 py-2 shadow-md z-50 transition-colors duration-500">
-      <div className="container mx-auto flex items-center justify-between px-4">
+      <div className="container max-w-7xl mx-auto flex items-center justify-between px-4">
         {/* Logo */}
         <div>
           {isHomePage ? (
