@@ -28,7 +28,10 @@ module.exports = {
         fadeIn: 'fadeIn 1s ease-out',
       },
       maxWidth: {
-        prose: '65ch', // Ideal for readable body content
+        prose: '65ch',
+      },
+      backdropBlur: {
+        xs: '2px',
       },
     },
   },

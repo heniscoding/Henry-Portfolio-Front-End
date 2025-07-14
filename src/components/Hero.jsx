@@ -64,13 +64,13 @@ const Hero = () => {
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat z-0"
           style={{
-            backgroundImage: "url('/data/tech-background-light.jpg')",
+            backgroundImage: "url('/data/tech-background4.jpg')",
           }}
         />
       )}
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 z-0" />
+      <div className="absolute inset-0 bg-black/70 z-0" />
 
       {/* Content */}
       <div className="relative z-10 max-w-3xl text-white">
