@@ -67,7 +67,7 @@ const ProjectsCarousel = () => {
         </p>
       </motion.div>
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative max-w-4xl mx-auto">
         <div className="relative flex items-center">
           {projects.length >= 3 && (
             <button
@@ -88,9 +88,9 @@ const ProjectsCarousel = () => {
 
           <Swiper
             modules={[Pagination, Autoplay]}
-            spaceBetween={30}
+            spaceBetween={10}
             slidesPerView={1}
-            loop={projects.length >= 5}
+            loop={projects.length >= 4}
             pagination={{ clickable: true }}
             autoplay={{ delay: 6000, disableOnInteraction: false }}
             breakpoints={{
@@ -98,7 +98,6 @@ const ProjectsCarousel = () => {
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
               1280: { slidesPerView: 4 },
-              1536: { slidesPerView: 5 },
             }}
             onSwiper={setSwiperRef}
             className="!pb-12 w-full"
