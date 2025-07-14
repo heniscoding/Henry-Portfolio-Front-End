@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { fetchProjects } from "../services/api";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const ProjectsCarousel = () => {
+const ProjectsCarousel = forwardRef((props, ref) => {
   const [projects, setProjects] = useState([]);
   const [swiperRef, setSwiperRef] = useState(null);
 
@@ -33,21 +33,18 @@ const ProjectsCarousel = () => {
   }, []);
 
   const handlePrev = useCallback(() => {
-    if (swiperRef && swiperRef.slidePrev) {
-      swiperRef.slidePrev();
-    }
+    if (swiperRef?.slidePrev) swiperRef.slidePrev();
   }, [swiperRef]);
 
   const handleNext = useCallback(() => {
-    if (swiperRef && swiperRef.slideNext) {
-      swiperRef.slideNext();
-    }
+    if (swiperRef?.slideNext) swiperRef.slideNext();
   }, [swiperRef]);
 
   return (
     <section
       id="projects"
-      className="relative py-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 px-6"
+      ref={ref} // 👈 important line
+      className="relative py-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 px-6 scroll-mt-[64px]"
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -152,6 +149,6 @@ const ProjectsCarousel = () => {
       </div>
     </section>
   );
-};
+});
 
 export default ProjectsCarousel;
