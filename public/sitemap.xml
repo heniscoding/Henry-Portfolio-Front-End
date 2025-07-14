@@ -29,6 +29,14 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.henryalderslade.com/projects/ethereum-alert-bot-real-time-telegram-notifications</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.henryalderslade.com/projects/vinted-deal-scraper-discord-alert-bot</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.henryalderslade.com/photo-index</loc>
     <priority>0.8</priority>
   </url>
