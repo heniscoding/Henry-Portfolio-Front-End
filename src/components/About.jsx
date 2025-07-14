@@ -17,7 +17,7 @@ const About = () => {
       {/* About Section */}
       <section
         id="about"
-        className="relative py-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 flex flex-col items-center px-6"
+        className="relative py-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 flex flex-col items-center px-6 scroll-mt-[64px]"
       >
         <div
           id="about-anchor"

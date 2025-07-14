@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; // ← updated
 import { fetchProjects } from "../services/api";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 const ProjectDetails = () => {
   const { slug } = useParams();
+  const navigate = useNavigate(); // ← new
   const [project, setProject] = useState(null);
 
   useEffect(() => {
@@ -45,8 +46,6 @@ const ProjectDetails = () => {
           content={`https://henryalderslade.com/projects/${project.slug}`}
         />
         <meta property="og:type" content="website" />
-
-        {/* JSON-LD Schema for this project */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -73,22 +72,17 @@ const ProjectDetails = () => {
 
       {/* Hero Section */}
       <div className="relative w-full h-[40vh] sm:h-[45vh] md:h-[40vh] overflow-hidden pt-16">
-        {/* Background image */}
         <img
           src={project.image}
           alt={project.title}
           className="w-full h-full object-cover object-center"
         />
-
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 backdrop-blur-sm z-10" />
-
-        {/* Content inside hero */}
         <div className="absolute inset-0 z-20 flex flex-col justify-between px-4 py-6 sm:py-8">
-          {/* Back Button - TOP LEFT inside image */}
+          {/* Back Button */}
           <div className="w-full max-w-3xl mx-auto mt-16">
             <motion.button
-              onClick={() => window.history.back()}
+              onClick={() => navigate("/", { state: { scrollTo: "projects" } })} // ← updated
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.4 }}
@@ -98,7 +92,7 @@ const ProjectDetails = () => {
             </motion.button>
           </div>
 
-          {/* Title - CENTERED */}
+          {/* Title */}
           <div className="flex justify-center items-center flex-grow">
             <div className="max-w-3xl w-full mx-auto text-center">
               <motion.h1
