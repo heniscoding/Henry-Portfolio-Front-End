@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
-import { FaEnvelope, FaLinkedin } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Toast = ({ message, type, onClose }) => {
@@ -108,7 +108,8 @@ const Contact = () => {
           Let’s<span className="text-custom-light-orange"> Chat</span>
         </h2>
         <p className="text-center text-gray-800 dark:text-gray-300 mb-8">
-          Looking for a creative brain with a technical backbone and a sense of humor? You know what to do.
+          Looking for a creative brain with a technical backbone and a sense of
+          humor? You know what to do.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-6">
@@ -125,6 +126,22 @@ const Contact = () => {
             className="flex items-center gap-2 text-custom-light-orange transition"
           >
             <FaLinkedin /> LinkedIn
+          </a>
+          <a
+            href="https://x.com/henryalderslade"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-custom-light-orange transition"
+          >
+            <FaTwitter /> X (Twitter)
+          </a>
+          <a
+            href="https://www.instagram.com/henryalderslade"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-custom-light-orange transition"
+          >
+            <FaInstagram /> Instagram
           </a>
         </div>
 

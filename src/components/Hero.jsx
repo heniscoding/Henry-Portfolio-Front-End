@@ -4,8 +4,8 @@ import { Typewriter } from "react-simple-typewriter";
 import {
   FaGithub,
   FaFileDownload,
-  FaRocket,
   FaInstagram,
+  FaTwitter, // ✅ Added for X (Twitter)
   FaChevronDown,
 } from "react-icons/fa";
 
@@ -25,18 +25,12 @@ const Hero = () => {
 
   useEffect(() => {
     if (isDesktop) {
-      // Delay lazy load by ~500ms after mount
       const timeout = setTimeout(() => {
         setLazyLoadVideo(true);
       }, 500);
       return () => clearTimeout(timeout);
     }
   }, [isDesktop]);
-
-  const scrollToProjects = () => {
-    const section = document.getElementById("projects");
-    section?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   const scrollToAbout = () => {
     const section = document.getElementById("about");
@@ -48,7 +42,6 @@ const Hero = () => {
       id="hero"
       className="relative py-60 flex flex-col items-center justify-center text-center px-4 overflow-hidden"
     >
-      {/* Lazy-loaded Background Video (Desktop only) */}
       {isDesktop && lazyLoadVideo ? (
         <video
           className="absolute inset-0 w-full h-full object-cover z-0"
@@ -69,10 +62,8 @@ const Hero = () => {
         />
       )}
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/70 z-0" />
 
-      {/* Content */}
       <div className="relative z-10 max-w-3xl text-white">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -113,21 +104,12 @@ const Hero = () => {
           </span>
         </motion.p>
 
-        {/* Buttons */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.4 }}
           className="mt-10 flex flex-col sm:flex-row sm:justify-center sm:items-center gap-4"
         >
-          <button
-            onClick={scrollToProjects}
-            className="group px-5 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-blue-500 to-blue-700 text-white opacity-80 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
-          >
-            <FaRocket className="transition-transform duration-300 group-hover:translate-x-1" />
-            View Work
-          </button>
-
           <a
             href="/data/Henry-Alderslade-CV-2024.pdf"
             download
@@ -148,7 +130,7 @@ const Hero = () => {
           </a>
 
           <a
-            href="https://instagram.com/yourusername"
+            href="https://www.instagram.com/henryalderslade"
             target="_blank"
             rel="noopener noreferrer"
             className="group px-5 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-pink-500 to-pink-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
@@ -156,10 +138,19 @@ const Hero = () => {
             <FaInstagram className="transition-transform duration-300 group-hover:scale-110" />
             Instagram
           </a>
+
+          <a
+            href="https://x.com/henryalderslade"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group px-5 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-sky-500 to-sky-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
+          >
+            <FaTwitter className="transition-transform duration-300 group-hover:scale-110" />
+            X (Twitter)
+          </a>
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
       <button
         onClick={scrollToAbout}
         className="absolute bottom-10 text-custom-light-orange hover:text-orange-600 transition-colors duration-300 animate-bounce"
