@@ -78,7 +78,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg"
+          className="text-4xl md:text-6xl text-white font-extrabold leading-tight drop-shadow-lg"
         >
           Henry{" "}
           <span className="text-custom-light-orange drop-shadow-md transition duration-300">
