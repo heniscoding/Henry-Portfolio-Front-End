@@ -14,10 +14,7 @@ const Navbar = () => {
     const storedTheme = localStorage.getItem("theme");
     const preferredTheme = storedTheme || "dark";
     setTheme(preferredTheme);
-    document.documentElement.classList.toggle(
-      "dark",
-      preferredTheme === "dark"
-    );
+    document.documentElement.classList.toggle("dark", preferredTheme === "dark");
   }, []);
 
   const toggleTheme = () => {
@@ -27,9 +24,10 @@ const Navbar = () => {
     document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
-  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const toggleMenu = () => setIsOpen(prev => !prev);
   const closeMenu = () => setIsOpen(false);
 
+  // Close on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (isOpen && menuRef.current && !menuRef.current.contains(e.target)) {
@@ -40,13 +38,13 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
+  // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
+  // Close menu on react‑scroll events
   useEffect(() => {
     Events.scrollEvent.register("begin", closeMenu);
     scrollSpy.update();
@@ -62,7 +60,10 @@ const Navbar = () => {
     "hover:text-orange-600 dark:hover:text-yellow-300";
 
   return (
-    <nav className="fixed top-0 w-full bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 py-2 shadow-md z-50 transition-colors duration-500">
+    <nav
+      ref={menuRef}
+      className="fixed top-0 w-full bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 py-2 shadow-md z-50 transition-colors duration-500"
+    >
       <div className="container max-w-7xl mx-auto flex items-center justify-between px-4">
         {/* Logo */}
         <div>
@@ -106,93 +107,43 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-6 ml-auto">
           {isHomePage ? (
             <>
-              <ScrollLink
-                to="hero"
-                smooth
-                spy
-                duration={500}
-                offset={-60}
-                className={navLinkClass()}
-              >
+              <ScrollLink to="hero" smooth spy duration={500} offset={-60} className={navLinkClass()}>
                 Home
               </ScrollLink>
-              <ScrollLink
-                to="about"
-                smooth
-                spy
-                duration={500}
-                offset={-60}
-                className={navLinkClass()}
-              >
+              <ScrollLink to="about" smooth spy duration={500} offset={-60} className={navLinkClass()}>
                 About
               </ScrollLink>
-              <ScrollLink
-                to="projects"
-                smooth
-                spy
-                duration={500}
-                offset={-60}
-                className={navLinkClass()}
-              >
+              <ScrollLink to="projects" smooth spy duration={500} offset={-60} className={navLinkClass()}>
                 Projects
               </ScrollLink>
-              <ScrollLink
-                to="contact"
-                smooth
-                spy
-                duration={500}
-                offset={-60}
-                className={navLinkClass()}
-              >
+              <ScrollLink to="contact" smooth spy duration={500} offset={-60} className={navLinkClass()}>
                 Contact
               </ScrollLink>
             </>
           ) : (
             <>
-              <RouterLink
-                to="/"
-                state={{ scrollTo: "hero" }}
-                onClick={closeMenu}
-                className={routerLinkClass}
-              >
+              <RouterLink to="/" state={{ scrollTo: "hero" }} onClick={closeMenu} className={routerLinkClass}>
                 Home
               </RouterLink>
-              <RouterLink
-                to="/"
-                state={{ scrollTo: "about" }}
-                onClick={closeMenu}
-                className={routerLinkClass}
-              >
+              <RouterLink to="/" state={{ scrollTo: "about" }} onClick={closeMenu} className={routerLinkClass}>
                 About
               </RouterLink>
-              <RouterLink
-                to="/"
-                state={{ scrollTo: "projects" }}
-                onClick={closeMenu}
-                className={routerLinkClass}
-              >
+              <RouterLink to="/" state={{ scrollTo: "projects" }} onClick={closeMenu} className={routerLinkClass}>
                 Projects
               </RouterLink>
-              <RouterLink
-                to="/"
-                state={{ scrollTo: "contact" }}
-                onClick={closeMenu}
-                className={routerLinkClass}
-              >
+              <RouterLink to="/" state={{ scrollTo: "contact" }} onClick={closeMenu} className={routerLinkClass}>
                 Contact
               </RouterLink>
             </>
           )}
 
-          {/* Theme Toggle Desktop */}
+          {/* Theme Toggle (Desktop) */}
           <button
             onClick={toggleTheme}
             className="ml-4 flex items-center gap-2 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300"
             aria-label="Toggle Theme"
           >
-            <span className="text-sm">
-              {theme === "light" ? "Dark" : "Light"}
-            </span>
+            <span className="text-sm">{theme === "light" ? "Dark" : "Light"}</span>
             {theme === "light" ? (
               <FaMoon className="text-yellow-500 transition-transform duration-500" />
             ) : (
@@ -201,8 +152,8 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile: Theme Icon + Hamburger */}
-        <div className="md:hidden flex items-center gap-3 ml-auto">
+        {/* Mobile Icons (still in container) */}
+        <div className="md:hidden flex items-center gap-3 ml-auto z-50">
           <button
             onClick={toggleTheme}
             className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300"
@@ -216,7 +167,7 @@ const Navbar = () => {
           </button>
           <button
             onClick={toggleMenu}
-            className="p-2 focus:outline-none z-50"
+            className="p-2 focus:outline-none"
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             <svg
@@ -229,102 +180,49 @@ const Navbar = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d={
-                  isOpen
-                    ? "M6 18L18 6M6 6l12 12" // X icon
-                    : "M4 6h16M4 12h16m-7 6h7" // Hamburger icon
-                }
+                d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
               />
             </svg>
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu (no ref here) */}
       <div
-        ref={menuRef}
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out transform ${
+        className={`md:hidden transition-all duration-300 ease-in-out transform overflow-hidden ${
           isOpen
             ? "max-h-[500px] translate-y-0 opacity-100"
-            : "max-h-0 -translate-y-2 opacity-0"
+            : "max-h-0 -translate-y-2 opacity-0 pointer-events-none"
         } bg-white/80 dark:bg-gray-800/80 backdrop-blur-md px-4`}
       >
         <div className="flex flex-col space-y-2 py-4">
           {isHomePage ? (
             <>
-              <ScrollLink
-                to="hero"
-                smooth
-                duration={500}
-                offset={-60}
-                onClick={closeMenu}
-                className={navLinkClass()}
-              >
+              <ScrollLink to="hero" smooth duration={500} offset={-60} onClick={closeMenu} className={navLinkClass()}>
                 Home
               </ScrollLink>
-              <ScrollLink
-                to="about"
-                smooth
-                duration={500}
-                offset={-60}
-                onClick={closeMenu}
-                className={navLinkClass()}
-              >
+              <ScrollLink to="about" smooth duration={500} offset={-60} onClick={closeMenu} className={navLinkClass()}>
                 About
               </ScrollLink>
-              <ScrollLink
-                to="projects"
-                smooth
-                duration={500}
-                offset={-60}
-                onClick={closeMenu}
-                className={navLinkClass()}
-              >
+              <ScrollLink to="projects" smooth duration={500} offset={-60} onClick={closeMenu} className={navLinkClass()}>
                 Projects
               </ScrollLink>
-              <ScrollLink
-                to="contact"
-                smooth
-                duration={500}
-                offset={-60}
-                onClick={closeMenu}
-                className={navLinkClass()}
-              >
+              <ScrollLink to="contact" smooth duration={500} offset={-60} onClick={closeMenu} className={navLinkClass()}>
                 Contact
               </ScrollLink>
             </>
           ) : (
             <>
-              <RouterLink
-                to="/"
-                state={{ scrollTo: "hero" }}
-                onClick={closeMenu}
-                className={routerLinkClass}
-              >
+              <RouterLink to="/" state={{ scrollTo: "hero" }} onClick={closeMenu} className={routerLinkClass}>
                 Home
               </RouterLink>
-              <RouterLink
-                to="/"
-                state={{ scrollTo: "about" }}
-                onClick={closeMenu}
-                className={routerLinkClass}
-              >
+              <RouterLink to="/" state={{ scrollTo: "about" }} onClick={closeMenu} className={routerLinkClass}>
                 About
               </RouterLink>
-              <RouterLink
-                to="/"
-                state={{ scrollTo: "projects" }}
-                onClick={closeMenu}
-                className={routerLinkClass}
-              >
+              <RouterLink to="/" state={{ scrollTo: "projects" }} onClick={closeMenu} className={routerLinkClass}>
                 Projects
               </RouterLink>
-              <RouterLink
-                to="/"
-                state={{ scrollTo: "contact" }}
-                onClick={closeMenu}
-                className={routerLinkClass}
-              >
+              <RouterLink to="/" state={{ scrollTo: "contact" }} onClick={closeMenu} className={routerLinkClass}>
                 Contact
               </RouterLink>
             </>
