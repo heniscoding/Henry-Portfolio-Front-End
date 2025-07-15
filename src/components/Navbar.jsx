@@ -14,7 +14,10 @@ const Navbar = () => {
     const storedTheme = localStorage.getItem("theme");
     const preferredTheme = storedTheme || "dark";
     setTheme(preferredTheme);
-    document.documentElement.classList.toggle("dark", preferredTheme === "dark");
+    document.documentElement.classList.toggle(
+      "dark",
+      preferredTheme === "dark"
+    );
   }, []);
 
   const toggleTheme = () => {
@@ -103,17 +106,81 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-6 ml-auto">
           {isHomePage ? (
             <>
-              <ScrollLink to="hero" smooth spy duration={500} offset={-60} className={navLinkClass()}>Home</ScrollLink>
-              <ScrollLink to="about" smooth spy duration={500} offset={-60} className={navLinkClass()}>About</ScrollLink>
-              <ScrollLink to="projects" smooth spy duration={500} offset={-60} className={navLinkClass()}>Projects</ScrollLink>
-              <ScrollLink to="contact" smooth spy duration={500} offset={-60} className={navLinkClass()}>Contact</ScrollLink>
+              <ScrollLink
+                to="hero"
+                smooth
+                spy
+                duration={500}
+                offset={-60}
+                className={navLinkClass()}
+              >
+                Home
+              </ScrollLink>
+              <ScrollLink
+                to="about"
+                smooth
+                spy
+                duration={500}
+                offset={-60}
+                className={navLinkClass()}
+              >
+                About
+              </ScrollLink>
+              <ScrollLink
+                to="projects"
+                smooth
+                spy
+                duration={500}
+                offset={-60}
+                className={navLinkClass()}
+              >
+                Projects
+              </ScrollLink>
+              <ScrollLink
+                to="contact"
+                smooth
+                spy
+                duration={500}
+                offset={-60}
+                className={navLinkClass()}
+              >
+                Contact
+              </ScrollLink>
             </>
           ) : (
             <>
-              <RouterLink to="/" state={{ scrollTo: "hero" }} onClick={closeMenu} className={routerLinkClass}>Home</RouterLink>
-              <RouterLink to="/" state={{ scrollTo: "about" }} onClick={closeMenu} className={routerLinkClass}>About</RouterLink>
-              <RouterLink to="/" state={{ scrollTo: "projects" }} onClick={closeMenu} className={routerLinkClass}>Projects</RouterLink>
-              <RouterLink to="/" state={{ scrollTo: "contact" }} onClick={closeMenu} className={routerLinkClass}>Contact</RouterLink>
+              <RouterLink
+                to="/"
+                state={{ scrollTo: "hero" }}
+                onClick={closeMenu}
+                className={routerLinkClass}
+              >
+                Home
+              </RouterLink>
+              <RouterLink
+                to="/"
+                state={{ scrollTo: "about" }}
+                onClick={closeMenu}
+                className={routerLinkClass}
+              >
+                About
+              </RouterLink>
+              <RouterLink
+                to="/"
+                state={{ scrollTo: "projects" }}
+                onClick={closeMenu}
+                className={routerLinkClass}
+              >
+                Projects
+              </RouterLink>
+              <RouterLink
+                to="/"
+                state={{ scrollTo: "contact" }}
+                onClick={closeMenu}
+                className={routerLinkClass}
+              >
+                Contact
+              </RouterLink>
             </>
           )}
 
@@ -123,7 +190,9 @@ const Navbar = () => {
             className="ml-4 flex items-center gap-2 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300"
             aria-label="Toggle Theme"
           >
-            <span className="text-sm">{theme === "light" ? "Dark" : "Light"}</span>
+            <span className="text-sm">
+              {theme === "light" ? "Dark" : "Light"}
+            </span>
             {theme === "light" ? (
               <FaMoon className="text-yellow-500 transition-transform duration-500" />
             ) : (
@@ -145,9 +214,13 @@ const Navbar = () => {
               <FaSun className="text-yellow-300 text-lg rotate-180 transition-transform duration-500" />
             )}
           </button>
-          <button onClick={toggleMenu} className="p-2" aria-label="Toggle Menu">
+          <button
+            onClick={toggleMenu}
+            className="p-2 focus:outline-none z-50"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+          >
             <svg
-              className="w-6 h-6 text-gray-800 dark:text-gray-200 hover:text-blue-400"
+              className="w-6 h-6 text-gray-800 dark:text-gray-200 hover:text-blue-400 transition-transform duration-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -156,7 +229,11 @@ const Navbar = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
+                d={
+                  isOpen
+                    ? "M6 18L18 6M6 6l12 12" // X icon
+                    : "M4 6h16M4 12h16m-7 6h7" // Hamburger icon
+                }
               />
             </svg>
           </button>
@@ -167,23 +244,89 @@ const Navbar = () => {
       <div
         ref={menuRef}
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out transform ${
-          isOpen ? "max-h-[500px] translate-y-0 opacity-100" : "max-h-0 -translate-y-2 opacity-0"
+          isOpen
+            ? "max-h-[500px] translate-y-0 opacity-100"
+            : "max-h-0 -translate-y-2 opacity-0"
         } bg-white/80 dark:bg-gray-800/80 backdrop-blur-md px-4`}
       >
         <div className="flex flex-col space-y-2 py-4">
           {isHomePage ? (
             <>
-              <ScrollLink to="hero" smooth duration={500} offset={-60} onClick={closeMenu} className={navLinkClass()}>Home</ScrollLink>
-              <ScrollLink to="about" smooth duration={500} offset={-60} onClick={closeMenu} className={navLinkClass()}>About</ScrollLink>
-              <ScrollLink to="projects" smooth duration={500} offset={-60} onClick={closeMenu} className={navLinkClass()}>Projects</ScrollLink>
-              <ScrollLink to="contact" smooth duration={500} offset={-60} onClick={closeMenu} className={navLinkClass()}>Contact</ScrollLink>
+              <ScrollLink
+                to="hero"
+                smooth
+                duration={500}
+                offset={-60}
+                onClick={closeMenu}
+                className={navLinkClass()}
+              >
+                Home
+              </ScrollLink>
+              <ScrollLink
+                to="about"
+                smooth
+                duration={500}
+                offset={-60}
+                onClick={closeMenu}
+                className={navLinkClass()}
+              >
+                About
+              </ScrollLink>
+              <ScrollLink
+                to="projects"
+                smooth
+                duration={500}
+                offset={-60}
+                onClick={closeMenu}
+                className={navLinkClass()}
+              >
+                Projects
+              </ScrollLink>
+              <ScrollLink
+                to="contact"
+                smooth
+                duration={500}
+                offset={-60}
+                onClick={closeMenu}
+                className={navLinkClass()}
+              >
+                Contact
+              </ScrollLink>
             </>
           ) : (
             <>
-              <RouterLink to="/" state={{ scrollTo: "hero" }} onClick={closeMenu} className={routerLinkClass}>Home</RouterLink>
-              <RouterLink to="/" state={{ scrollTo: "about" }} onClick={closeMenu} className={routerLinkClass}>About</RouterLink>
-              <RouterLink to="/" state={{ scrollTo: "projects" }} onClick={closeMenu} className={routerLinkClass}>Projects</RouterLink>
-              <RouterLink to="/" state={{ scrollTo: "contact" }} onClick={closeMenu} className={routerLinkClass}>Contact</RouterLink>
+              <RouterLink
+                to="/"
+                state={{ scrollTo: "hero" }}
+                onClick={closeMenu}
+                className={routerLinkClass}
+              >
+                Home
+              </RouterLink>
+              <RouterLink
+                to="/"
+                state={{ scrollTo: "about" }}
+                onClick={closeMenu}
+                className={routerLinkClass}
+              >
+                About
+              </RouterLink>
+              <RouterLink
+                to="/"
+                state={{ scrollTo: "projects" }}
+                onClick={closeMenu}
+                className={routerLinkClass}
+              >
+                Projects
+              </RouterLink>
+              <RouterLink
+                to="/"
+                state={{ scrollTo: "contact" }}
+                onClick={closeMenu}
+                className={routerLinkClass}
+              >
+                Contact
+              </RouterLink>
             </>
           )}
         </div>
