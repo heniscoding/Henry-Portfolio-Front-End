@@ -27,7 +27,6 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(prev => !prev);
   const closeMenu = () => setIsOpen(false);
 
-  // Close on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (isOpen && menuRef.current && !menuRef.current.contains(e.target)) {
@@ -38,13 +37,11 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  // Close menu on react‑scroll events
   useEffect(() => {
     Events.scrollEvent.register("begin", closeMenu);
     scrollSpy.update();
@@ -152,7 +149,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Icons (still in container) */}
+        {/* Mobile Icons */}
         <div className="md:hidden flex items-center gap-3 ml-auto z-50">
           <button
             onClick={toggleTheme}
@@ -187,12 +184,12 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu (no ref here) */}
+      {/* Mobile Menu */}
       <div
-        className={`md:hidden transition-all duration-300 ease-in-out transform overflow-hidden ${
+        className={`md:hidden absolute top-full inset-x-0 transition-all duration-300 ease-in-out overflow-hidden ${
           isOpen
-            ? "max-h-[500px] translate-y-0 opacity-100"
-            : "max-h-0 -translate-y-2 opacity-0 pointer-events-none"
+            ? "max-h-[500px] opacity-100"
+            : "max-h-0 opacity-0 pointer-events-none"
         } bg-white/80 dark:bg-gray-800/80 backdrop-blur-md px-4`}
       >
         <div className="flex flex-col space-y-2 py-4">
