@@ -6,15 +6,17 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import ProjectsCarousel from "./components/ProjectsCarousel";
 import Contact from "./components/Contact";
 import ProjectDetails from "./components/ProjectDetails";
-import Footer from "./components/Footer";
 import PhotoIndex from "./components/PhotoIndex";
+import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import NotFound from "./components/NotFound";  // ← NEW
 
 const Home = () => {
   const location = useLocation();
@@ -22,7 +24,6 @@ const Home = () => {
 
   useEffect(() => {
     if (location.state?.scrollTo === "projects") {
-      // Instantly scroll to the section before any animations or user interaction
       projectsRef.current?.scrollIntoView({
         behavior: "instant",
         block: "start",
@@ -56,10 +57,14 @@ const App = () => {
     <Router>
       <ScrollToTop />
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects/:slug" element={<ProjectDetails />} />
         <Route path="/photo-index" element={<PhotoIndex />} />
+
+        {/* Catch-all for any undefined route */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
