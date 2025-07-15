@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://henryalderslade.com/sitemap.xml
-Sitemap: https://henryalderslade.com/image-sitemap.xml
+Sitemap: https://www.henryalderslade.com/sitemap.xml
+Sitemap: https://www.henryalderslade.com/image-sitemap.xml
