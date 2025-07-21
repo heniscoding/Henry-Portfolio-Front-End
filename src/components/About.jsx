@@ -6,9 +6,13 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaWordpress,
+  FaCamera,
+  FaCameraRetro,
+  FaVideo,
+  FaPaperPlane,
 } from "react-icons/fa";
 import { SiPostgresql, SiExpress } from "react-icons/si";
-import { MdOutlineDesignServices, MdApi } from "react-icons/md";
+import { MdOutlineDesignServices, MdApi, MdTune } from "react-icons/md";
 import { motion } from "framer-motion";
 
 const About = () => {
@@ -37,10 +41,13 @@ const About = () => {
           </h2>
 
           <p className="text-md md:text-custom-base leading-relaxed text-gray-800">
-            I’m a freelance developer with a maker’s mindset and a soft spot for
-            projects that solve real problems — simply, beautifully, and without
-            unnecessary noise. <br />
-            <br />I work mostly with modern tools like{" "}
+            I’m a freelance developer and drone videographer with a maker’s
+            mindset and a soft spot for projects that solve real problems —
+            simply, beautifully, and without unnecessary noise.
+            <br />
+            <br />
+            These days, I split my time between clean code and clean shots —
+            building intuitive apps with tools like{" "}
             <a
               href="https://react.dev"
               target="_blank"
@@ -67,15 +74,20 @@ const About = () => {
             >
               MongoDB
             </a>
-            — but tools are just that: tools. What matters is building things
-            that are intuitive to use and genuinely useful. I like digging into
-            the details, experimenting with ideas, and turning rough concepts
-            into smooth, working realities. <br />
+            — and capturing cinematic moments with drones and cameras. Whether
+            it's a web tool or a wide-angle flyover, I’m drawn to things that
+            work well, feel good, and serve a clear purpose.
+            <br />
+            <br />
+            I like digging into the details, experimenting with ideas, and
+            turning rough concepts into smooth, working realities.
+            <br />
             <br />
             Outside the screen, I chase fresh air, fast bikes, crispy chicken
             wings, and the kind of countryside escapes that reset your brain. I
             believe good ideas need room to breathe — and sometimes that means
-            stepping away from the desk and into the world. <br />
+            stepping away from the desk and into the world.
+            <br />
             <br />
             If you’ve got a project with purpose (or just a hunch that could
             turn into something cool), let’s talk.
@@ -83,7 +95,7 @@ const About = () => {
         </motion.div>
       </section>
 
-      {/* Tech Stack Section */}
+      {/* Tech & Creative Stack Section */}
       <section
         id="tech-stack"
         className="relative py-20 text-center px-4 text-gray-900 dark:text-white transition-colors duration-500 overflow-hidden"
@@ -116,8 +128,8 @@ const About = () => {
             viewport={{ once: true }}
             className="text-2xl md:text-3xl font-bold mb-6"
           >
-            <span className="text-gray-900 dark:text-white">Tech</span>{" "}
-            <span className="text-custom-light-orange">Stack</span>
+            <span className="text-gray-900 dark:text-white">Tech Stack</span>{" "}
+            <span className="text-custom-light-orange">/ Creative Gear</span>
           </motion.h2>
 
           <motion.p
@@ -127,27 +139,13 @@ const About = () => {
             viewport={{ once: true }}
             className="mb-12 md:text-base text-gray-800 dark:text-gray-300 leading-relaxed"
           >
-            Right now, I’m building with{" "}
-            <span className="text-custom-light-orange font-semibold">
-              React
-            </span>
-            ,{" "}
-            <span className="text-custom-light-orange font-semibold">
-              JavaScript
-            </span>
-            ,{" "}
-            <span className="text-custom-light-orange font-semibold">
-              Node.js
-            </span>
-            , and{" "}
-            <span className="text-custom-light-orange font-semibold">
-              PostgreSQL
-            </span>{" "}
-            — creating digital experiences that are fast, purposeful, and
-            actually enjoyable to use. I’m drawn to projects that mix logic with
-            creativity — things that work well and feel even better.
+            Whether I’m coding a web app or capturing cinematic drone shots, I
+            rely on a mix of digital tools to bring ideas to life. My stack
+            blends logic, visuals, and storytelling — for things that work well
+            and look even better.
           </motion.p>
 
+          {/* Combined Grid */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -158,7 +156,7 @@ const About = () => {
               },
             }}
             viewport={{ once: true }}
-            className="mt-20 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
           >
             {[
               {
@@ -220,6 +218,38 @@ const About = () => {
                 label: "REST APIs",
                 color: "text-green-400",
                 description: "Designing and consuming RESTful services",
+              },
+              {
+                icon: <FaVideo />,
+                label: "DaVinci Resolve",
+                color: "text-rose-500",
+                description:
+                  "Professional editing, grading, and post-production",
+              },
+              {
+                icon: <FaPaperPlane />,
+                label: "DJI Mini 4 Pro",
+                color: "text-sky-500",
+                description: "Compact drone with pro-level flight and footage",
+              },
+              {
+                icon: <FaCameraRetro />,
+                label: "Sony ZV-E10",
+                color: "text-indigo-500",
+                description: "Mirrorless camera with interchangeable lenses",
+              },
+              {
+                icon: <FaCamera />,
+                label: "Osmo Action 4",
+                color: "text-orange-400",
+                description: "Stabilized action camera for high-motion shots",
+              },
+              {
+                icon: <MdTune />,
+                label: "ND Filters + Manual",
+                color: "text-teal-400",
+                description:
+                  "Precise control of exposure, shutter, and motion blur",
               },
             ].map(({ icon, label, color, description }, idx) => (
               <motion.div

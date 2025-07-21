@@ -54,13 +54,14 @@ const ProjectsCarousel = forwardRef((props, ref) => {
         className="max-w-3xl mx-auto text-center"
       >
         <h2 className="text-2xl md:text-3xl font-bold mb-6">
-          <span className="text-custom-light-orange">Build</span>{" "}
-          <span className="text-gray-900">Reel</span>
+          <span className="text-custom-light-orange">Work</span>{" "}
+          <span className="text-gray-900">Highlights</span>
         </h2>
         <p className="text-md md:text-custom-base leading-relaxed text-gray-800 mb-12">
-          Just a few highlights from things I’ve been building lately — clean
-          code, modern tools, and a sprinkle of love. Each project is designed
-          to be easy to use, fun to explore, and built with purpose.
+          Just a few standout projects I’ve been working on lately — from clean
+          code and smart tools to cinematic drone footage and creative
+          experiments. Each piece is built with intention, crafted to inspire,
+          and designed to be both functional and visually engaging.
         </p>
       </motion.div>
 
