@@ -87,12 +87,18 @@ const Hero = () => {
           <span className="font-semibold tracking-wide">
             <Typewriter
               words={[
-                "coder",
-                "drone pilot",
-                "motorcycle enthusiast",
-                "coffee drinker",
-                "problem solver",
-                "tech explorer",
+                "Coder",
+                "Drone Videographer",
+                "Visual Thinker",
+                "Gadgets Geek",
+                "Digital Creator",
+                "Pixel Perfectionist",
+                "Deal Hunter",
+                "Coffee Drinker",
+                "FPV Fanatic",
+                "Pixel Perfectionist",
+                "Problem Solver",
+                "Tech Explorer",
               ]}
               loop={0}
               cursor
