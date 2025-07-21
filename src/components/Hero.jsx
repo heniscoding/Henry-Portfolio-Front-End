@@ -108,10 +108,10 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-xl md:text-2xl mt-10 mb-10 text-gray-100 font-medium"
+          className="text-xl sm:text-2xl md:text-3xl mt-5 mb-20 text-gray-700 md:text-gray-100 font-medium"
         >
           <span>I’m a&nbsp;</span>
-          <span className="font-semibold tracking-wide">
+          <span className="font-bold tracking-wide">
             <Typewriter
               words={[
                 'Coder',
