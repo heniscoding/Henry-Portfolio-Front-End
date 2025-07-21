@@ -5,7 +5,7 @@ import {
   FaGithub,
   FaFileDownload,
   FaInstagram,
-  FaTwitter, // ✅ Added for X (Twitter)
+  FaTwitter,
   FaChevronDown,
 } from "react-icons/fa";
 
@@ -13,28 +13,26 @@ const Hero = () => {
   const [isDesktop, setIsDesktop] = useState(false);
   const [lazyLoadVideo, setLazyLoadVideo] = useState(false);
 
+  // detect desktop vs. mobile
   useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768);
-    };
-
-    handleResize(); // Initial check
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // lazy‑load video on desktop
   useEffect(() => {
-    if (isDesktop) {
-      const timeout = setTimeout(() => {
-        setLazyLoadVideo(true);
-      }, 500);
-      return () => clearTimeout(timeout);
-    }
+    if (!isDesktop) return;
+    const timer = setTimeout(() => setLazyLoadVideo(true), 500);
+    return () => clearTimeout(timer);
   }, [isDesktop]);
 
   const scrollToAbout = () => {
-    const section = document.getElementById("about");
-    section?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById("about")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
@@ -54,24 +52,53 @@ const Hero = () => {
           Your browser does not support the video tag.
         </video>
       ) : (
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat z-0"
-          style={{
-            backgroundImage: "url('/data/tech-background4.jpg')",
-          }}
-        />
+        <>
+          {isDesktop ? (
+            <>
+              {/* Desktop light-mode background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed z-0 block dark:hidden"
+                style={{ backgroundImage: "url('/data/tech-background-light3.jpg')" }}
+              />
+              {/* Desktop dark-mode background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed z-0 hidden dark:block"
+                style={{ backgroundImage: "url('/data/tech-background6.jpg')" }}
+              />
+            </>
+          ) : (
+            <>
+              {/* Mobile light-mode background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed z-0 block dark:hidden"
+                style={{ backgroundImage: "url('/data/mobile-light.jpg')" }}
+              />
+              {/* Mobile dark-mode background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed z-0 hidden dark:block"
+                style={{ backgroundImage: "url('/data/mobile-dark.jpg')" }}
+              />
+            </>
+          )}
+        </>
       )}
 
-      <div className="absolute inset-0 bg-black/70 z-0" />
+      {/* Overlay for readability */}
+      {isDesktop ? (
+        <div className="absolute inset-0 bg-black bg-opacity-70 z-0" />
+      ) : (
+        <div className="absolute inset-0 bg-white bg-opacity-30 dark:bg-black dark:bg-opacity-60 z-0" />
+      )}
 
-      <div className="relative z-10 max-w-3xl text-white">
+      {/* Content */}
+      <div className="relative z-10 max-w-3xl mx-auto text-white">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-6xl text-white font-extrabold leading-tight drop-shadow-lg"
+          className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg"
         >
-          Henry{" "}
+          Henry{' '}
           <span className="text-custom-light-orange drop-shadow-md transition duration-300">
             Alderslade
           </span>
@@ -87,18 +114,17 @@ const Hero = () => {
           <span className="font-semibold tracking-wide">
             <Typewriter
               words={[
-                "Coder",
-                "Drone Videographer",
-                "Visual Thinker",
-                "Gadgets Geek",
-                "Digital Creator",
-                "Pixel Perfectionist",
-                "Deal Hunter",
-                "Coffee Drinker",
-                "FPV Fanatic",
-                "Pixel Perfectionist",
-                "Problem Solver",
-                "Tech Explorer",
+                'Coder',
+                'Drone Videographer',
+                'Visual Thinker',
+                'Gadgets Geek',
+                'Digital Creator',
+                'Pixel Perfectionist',
+                'Deal Hunter',
+                'Coffee Drinker',
+                'FPV Fanatic',
+                'Problem Solver',
+                'Tech Explorer',
               ]}
               loop={0}
               cursor

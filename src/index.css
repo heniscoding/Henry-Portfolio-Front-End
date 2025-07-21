@@ -19,7 +19,9 @@ body {
 }
 
 /* Headings */
-h1,
+h1 {
+  @apply font-bold text-white font-sans;
+}
 h2,
 h3,
 h4,
@@ -123,7 +125,7 @@ section {
 
 @layer utilities {
   .text-custom-light-orange {
-    color: #8f46bb; /* Light mode version */
+    color: #0ea5e9; /* Light mode version */
   }
 
   .dark .text-custom-light-orange {
@@ -131,14 +133,14 @@ section {
   }
 
   .btn-custom-orange {
-    background-color: #8f46bb; /* Light theme */
+    background-color: #0ea5e9; /* Light theme */
   }
   .dark .btn-custom-orange {
     background-color: #cc5500; /* Dark theme – e.g., Tailwind's yellow-400 */
   }
 
   .btn-custom-orange:hover {
-    background-color: #7b3ca2; /* Light hover */
+    background-color: #007bc7; /* Light hover */
   }
 
   .dark .btn-custom-orange:hover {
