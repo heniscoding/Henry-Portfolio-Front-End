@@ -117,7 +117,7 @@ const About = () => {
         ></div>
 
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-white bg-opacity-10 dark:bg-black dark:bg-opacity-60 z-0"></div>
+        <div className="absolute inset-0 bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-60 z-0"></div>
 
         {/* Content */}
         <div className="relative z-10 max-w-3xl mx-auto">

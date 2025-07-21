@@ -87,7 +87,7 @@ const Hero = () => {
       {isDesktop ? (
         <div className="absolute inset-0 bg-black bg-opacity-70 z-0" />
       ) : (
-        <div className="absolute inset-0 bg-white bg-opacity-30 dark:bg-black dark:bg-opacity-60 z-0" />
+        <div className="absolute inset-0 bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-60 z-0" />
       )}
 
       {/* Content */}
