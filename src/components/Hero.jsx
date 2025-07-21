@@ -91,7 +91,7 @@ const Hero = () => {
       )}
 
       {/* Content */}
-      <div className="relative z-10 max-w-3xl mx-auto text-white">
+      <div className="relative z-10 max-w-3xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-xl sm:text-2xl md:text-3xl mt-5 mb-20 text-gray-700 md:text-gray-100 font-medium"
+          className="text-xl sm:text-2xl md:text-3xl mt-5 mb-20 sm:text-gray-700 dark:sm:text-gray-100 md:text-gray-100 font-medium"
         >
           <span>I’m a&nbsp;</span>
           <span className="font-bold tracking-wide">
