@@ -112,7 +112,6 @@ const ProjectDetails = () => {
               {project.title}
             </motion.h1>
           </div>
-          {/* Back button, bottom‑left of a max‑width wrapper */}
           <div className="absolute bottom-6 inset-x-0 z-20">
             <div className="max-w-3xl mx-auto px-6">
               <motion.button
@@ -147,41 +146,13 @@ const ProjectDetails = () => {
             className="bg-white shadow-xl rounded-lg overflow-hidden"
           >
             <div className="py-4 px-4 text-center">
-              <div className="mb-4 flex items-center justify-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <span className="h-[2px] w-8 bg-custom-light-orange rounded" />
-                <span className="my-6 uppercase tracking-wider text-sm md:text-base font-semibold text-gray-600">
+                <span className="my-3 uppercase tracking-wider text-[1.35rem] font-semibold text-gray-600">
                   Project Summary
                 </span>
                 <span className="h-[2px] w-8 bg-custom-light-orange rounded" />
               </div>
-              <div className="text-gray-700 text-sm md:text-base leading-relaxed mb-6 text-left space-y-4 font-sans max-w-prose mx-auto">
-                {project.description.split("\n\n").map((para, idx) => (
-                  <p key={idx}>{para}</p>
-                ))}
-              </div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div class="mb-4 flex items-center justify-center gap-2">
-                  <span class="h-[2px] w-8 bg-custom-light-orange rounded"></span>
-                  <span class="my-6 uppercase tracking-wider text-sm md:text-base font-semibold text-gray-600">
-                    Tech Stack
-                  </span>
-                  <span class="h-[2px] w-8 bg-custom-light-orange rounded"></span>
-                </div>
-                <div className="flex flex-wrap justify-center gap-2 mb-6">
-                  {project.techStack.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-gray-600 text-sm rounded font-medium text-gray-200"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
               {project.link && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -193,12 +164,40 @@ const ProjectDetails = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <button className="mt-2 px-5 py-2 btn-custom-orange text-white text-sm font-semibold rounded hover:shadow-md transition duration-300">
+                    <button className="px-3 py-1.5 text-sm font-medium text-white btn-custom-orange rounded hover:shadow-md transition">
                       Visit Project
                     </button>
                   </a>
                 </motion.div>
               )}
+              <div className="mt-10 text-gray-700 text-sm md:text-base leading-relaxed mb-4 text-left space-y-4 font-sans max-w-prose mx-auto">
+                {project.description.split("\n\n").map((para, idx) => (
+                  <p key={idx}>{para}</p>
+                ))}
+              </div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div class="mb-2 mt-6 flex items-center justify-center gap-2">
+                  <span class="h-[2px] w-8 bg-custom-light-orange rounded"></span>
+                  <span class="my-3 uppercase tracking-wider text-[1rem] font-semibold font-semibold text-gray-600">
+                    Tech Stack
+                  </span>
+                  <span class="h-[2px] w-8 bg-custom-light-orange rounded"></span>
+                </div>
+                <div className="flex flex-wrap justify-center gap-2 mb-6">
+                  {project.techStack.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1.5 text-sm font-medium text-white bg-gray-600 rounded hover:shadow-md transition"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
