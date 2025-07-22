@@ -121,7 +121,7 @@ const ProjectDetails = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.4 }}
-                className="text-white dark:text-white border border-solid border-white text-sm font-bold flex items-center gap-3 px-5 py-2 rounded bg-custom-green/20 dark:bg-custom-orange/20 backdrop-blur-sm hover:border-custom-green dark:hover:border-custom-orange transition-colors duration-900"
+                className="text-white dark:text-white border border-solid border-white text-sm font-bold flex items-center gap-2 px-5 py-2 rounded bg-custom-green/20 dark:bg-custom-orange/20 backdrop-blur-sm hover:border-custom-green dark:hover:border-custom-orange transition-colors duration-900"
               >
                 <span className="text-sm">←</span> Back
               </motion.button>
