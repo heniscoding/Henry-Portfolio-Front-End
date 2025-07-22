@@ -29,7 +29,7 @@ const Hero = () => {
   }, [isDesktop]);
 
   const scrollToAbout = () => {
-    document.getElementById("about-anchor")?.scrollIntoView({
+    document.getElementById("about")?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
