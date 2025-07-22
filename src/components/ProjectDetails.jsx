@@ -136,7 +136,7 @@ const ProjectDetails = () => {
       </div>
 
       {/* Project summary */}
-      <section className="relative pt-3 pb-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 px-2">
+      <section className="relative pt-10 pb-13 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 px-2">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-custom-light-orange" />
         <div className="max-w-3xl mx-auto px-6 py-6">
           <motion.div
