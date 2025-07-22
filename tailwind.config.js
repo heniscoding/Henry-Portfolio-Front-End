@@ -1,27 +1,25 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+  ],
   theme: {
     extend: {
       colors: {
-        'custom-orange': '#FF8343',
-        'custom-green': '#4bc260',
-        'custom-pink': '#a756f5',
+        // your existing custom colors
+        'custom-orange':       '#b34700',
         'custom-light-orange': '#d09200',
+        'custom-green':        '#0ea5e9',
+        'custom-pink':         '#a756f5',
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui'],
       },
       keyframes: {
         fadeIn: {
-          from: {
-            opacity: '0',
-            transform: 'translateY(20px)',
-          },
-          to: {
-            opacity: '1',
-            transform: 'translateY(0)',
-          },
+          from: { opacity: '0', transform: 'translateY(20px)' },
+          to:   { opacity: '1', transform: 'translateY(0)'     },
         },
       },
       animation: {
@@ -36,4 +34,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}

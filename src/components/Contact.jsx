@@ -107,7 +107,7 @@ const Contact = () => {
         <h2 className="text-center text-2xl md:text-3xl font-bold mb-6">
           Let’s<span className="text-custom-light-orange"> Chat</span>
         </h2>
-        <p className="text-center text-gray-800 dark:text-gray-300 mb-8">
+        <p className="max-w-3xl text-center text-gray-800 dark:text-gray-300 mb-8">
           Looking for a creative brain with a technical backbone and a sense of
           humor? You know what to do.
         </p>
@@ -147,7 +147,7 @@ const Contact = () => {
 
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-6 w-full px-6 mx-auto"
+          className="flex flex-col gap-6 w-full mx-auto"
         >
           <input
             type="text"

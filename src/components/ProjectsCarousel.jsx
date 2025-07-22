@@ -43,7 +43,7 @@ const ProjectsCarousel = forwardRef((props, ref) => {
   return (
     <section
       id="projects"
-      ref={ref} // 👈 important line
+      ref={ref}
       className="relative py-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 px-6 scroll-mt-[64px]"
     >
       <motion.div
@@ -65,7 +65,7 @@ const ProjectsCarousel = forwardRef((props, ref) => {
         </p>
       </motion.div>
 
-      <div className="relative max-w-4xl mx-auto">
+      <div className="relative z-10 max-w-3xl mx-auto">
         <div className="relative flex items-center">
           {projects.length >= 3 && (
             <button
@@ -92,9 +92,9 @@ const ProjectsCarousel = forwardRef((props, ref) => {
             pagination={{ clickable: true }}
             autoplay={{ delay: 6000, disableOnInteraction: false }}
             breakpoints={{
-              640: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
               768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
+              1024: { slidesPerView: 4 },
               1280: { slidesPerView: 4 },
             }}
             onSwiper={setSwiperRef}
@@ -113,7 +113,7 @@ const ProjectsCarousel = forwardRef((props, ref) => {
                       <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-700">
                         {project.title}
                       </h3>
-                      <p className="text-xs text-gray-600 mt-1 line-clamp-3">
+                      <p className="text-sm text-gray-600 mt-1 line-clamp-3">
                         {project.description}
                       </p>
                     </div>

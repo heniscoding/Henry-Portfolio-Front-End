@@ -1,29 +1,52 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Helmet } from "react-helmet";
-import { useParams, useNavigate } from "react-router-dom"; // ← updated
 import { fetchProjects } from "../services/api";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
-import { motion } from "framer-motion";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const ProjectDetails = () => {
   const { slug } = useParams();
-  const navigate = useNavigate(); // ← new
+  const navigate = useNavigate();
   const [project, setProject] = useState(null);
+  const [projects, setProjects] = useState([]);
+  const [swiperRef, setSwiperRef] = useState(null);
+
+  const buttonLabels = [
+    "Launch Project →",
+    "See the Work →",
+    "View Details →",
+    "Explore Build →",
+    "Check It Out →",
+    "Peek Inside →",
+  ];
 
   useEffect(() => {
-    const loadProject = async () => {
+    const loadProjects = async () => {
       try {
         const { data } = await fetchProjects();
-        const selectedProject = data.find((proj) => proj.slug === slug);
-        setProject(selectedProject);
+        const current = data.find((p) => p.slug === slug);
+        setProject(current);
+        setProjects(data.filter((p) => p.slug !== slug));
       } catch (err) {
         console.error(err);
       }
     };
-
-    loadProject();
+    loadProjects();
   }, [slug]);
+
+  const handlePrev = useCallback(() => {
+    swiperRef?.slidePrev();
+  }, [swiperRef]);
+
+  const handleNext = useCallback(() => {
+    swiperRef?.slideNext();
+  }, [swiperRef]);
 
   if (!project) {
     return (
@@ -43,7 +66,7 @@ const ProjectDetails = () => {
         <meta property="og:image" content={project.image} />
         <meta
           property="og:url"
-          content={`https://henryalderslade.com/projects/${project.slug}`}
+          content={`https://www.henryalderslade.com/projects/${project.slug}`}
         />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">
@@ -52,12 +75,12 @@ const ProjectDetails = () => {
             "@type": "CreativeWork",
             name: project.title,
             description: project.description,
-            url: `https://henryalderslade.com/projects/${project.slug}`,
+            url: `https://www.henryalderslade.com/projects/${project.slug}`,
             image: project.image,
             author: {
               "@type": "Person",
               name: "Henry Alderslade",
-              url: "https://henryalderslade.com",
+              url: "https://www.henryalderslade.com",
             },
             creator: {
               "@type": "Person",
@@ -70,89 +93,95 @@ const ProjectDetails = () => {
         </script>
       </Helmet>
 
-      {/* Hero Section */}
+      {/* Header image */}
       <div className="relative w-full h-[40vh] sm:h-[45vh] md:h-[40vh] overflow-hidden pt-16">
         <img
           src={project.image}
           alt={project.title}
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 backdrop-blur-sm z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40 backdrop-blur-sm z-10" />
         <div className="absolute inset-0 z-20 flex flex-col justify-between px-4 py-6 sm:py-8">
-          {/* Back Button */}
-          <div className="w-full max-w-3xl mx-auto mt-16">
-            <motion.button
-              onClick={() => navigate("/", { state: { scrollTo: "projects" } })} // ← updated
-              initial={{ opacity: 0, y: -10 }}
+          <div className="flex max-w-3xl mx-auto py-6 justify-center items-center flex-grow">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.4 }}
-              className="bg-black/40 backdrop-blur-sm px-3 py-1 rounded text-white text-sm font-semibold flex items-center gap-1 hover:text-[#41B06E] transition-colors duration-300"
+              transition={{ duration: 0.6 }}
+              className="text-4xl sm:text-3xl md:text-4xl font-extrabold text-white drop-shadow-lg text-center"
             >
-              <span className="text-lg">←</span> Back
-            </motion.button>
+              {project.title}
+            </motion.h1>
           </div>
-
-          {/* Title */}
-          <div className="flex justify-center items-center flex-grow">
-            <div className="max-w-3xl w-full mx-auto text-center">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
+          {/* Back button, bottom‑left of a max‑width wrapper */}
+          <div className="absolute bottom-6 inset-x-0 z-20">
+            <div className="max-w-3xl mx-auto px-6">
+              <motion.button
+                onClick={() =>
+                  navigate("/", { state: { scrollTo: "projects" } })
+                }
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg"
+                transition={{ delay: 0.3, duration: 0.4 }}
+                className="
+                text-white dark:text-white border border-solid border-white text-sm font-bold flex items-center gap-3 px-5 py-2 rounded
+                bg-custom-green/20 dark:bg-custom-orange/20 backdrop-blur-sm
+                hover:border-custom-green dark:hover:border-custom-orange 
+                transition-colors duration-900
+              "
               >
-                {project.title}
-              </motion.h1>
+                <span className="text-sm">←</span> Back
+              </motion.button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Project Content */}
-      <section className="relative pt-16 pb-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 px-6">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
-
-        <div className="max-w-3xl w-full mx-auto px-6">
+      {/* Project summary */}
+      <section className="relative pt-3 pb-20 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-800 px-2">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-custom-light-orange" />
+        <div className="max-w-3xl mx-auto px-6 py-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="bg-white shadow-xl rounded-lg overflow-hidden"
           >
-            <div className="p-6 text-center">
+            <div className="py-4 px-4 text-center">
               <div className="mb-4 flex items-center justify-center gap-2">
-                <span className="h-[2px] w-8 bg-custom-light-orange rounded-full"></span>
-                <span className="uppercase tracking-wider text-sm md:text-base font-semibold text-gray-600">
+                <span className="h-[2px] w-8 bg-custom-light-orange rounded" />
+                <span className="my-6 uppercase tracking-wider text-sm md:text-base font-semibold text-gray-600">
                   Project Summary
                 </span>
-                <span className="h-[2px] w-8 bg-custom-light-orange rounded-full"></span>
+                <span className="h-[2px] w-8 bg-custom-light-orange rounded" />
               </div>
               <div className="text-gray-700 text-sm md:text-base leading-relaxed mb-6 text-left space-y-4 font-sans max-w-prose mx-auto">
                 {project.description.split("\n\n").map((para, idx) => (
                   <p key={idx}>{para}</p>
                 ))}
               </div>
-
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.4 }}
               >
-                <h3 className="text-lg font-semibold !text-gray-800 mb-2">
-                  Tech Stack
-                </h3>
+                <div class="mb-4 flex items-center justify-center gap-2">
+                  <span class="h-[2px] w-8 bg-custom-light-orange rounded"></span>
+                  <span class="my-6 uppercase tracking-wider text-sm md:text-base font-semibold text-gray-600">
+                    Tech Stack
+                  </span>
+                  <span class="h-[2px] w-8 bg-custom-light-orange rounded"></span>
+                </div>
                 <div className="flex flex-wrap justify-center gap-2 mb-6">
-                  {project.techStack.map((tech, index) => (
+                  {project.techStack.map((tech, i) => (
                     <span
-                      key={index}
-                      className="px-3 py-1 bg-gray-200 text-sm rounded-full font-medium text-gray-700"
+                      key={i}
+                      className="px-3 py-1 bg-gray-600 text-sm rounded font-medium text-gray-200"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
               </motion.div>
-
               {project.link && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -174,7 +203,87 @@ const ProjectDetails = () => {
           </motion.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-custom-light-orange"></div>
+        {/* Other projects carousel */}
+        {projects.length > 0 && (
+          <div className="pt-6">
+            <div className="max-w-3xl mx-auto px-6">
+              <div className="relative flex items-center">
+                <button
+                  onClick={handlePrev}
+                  className="hidden xl:flex absolute z-10 items-center justify-center w-10 h-10 bg-white text-[#31aeb5] dark:text-[#d07f00] rounded-full shadow-md transition-colors duration-300 hover:bg-[#31aeb5] dark:hover:bg-[#d07f00] group"
+                  style={{
+                    top: "45%",
+                    left: "-52px",
+                    transform: "translateY(-50%)",
+                  }}
+                  aria-label="Previous Slide"
+                >
+                  <span className="group-hover:text-white">←</span>
+                </button>
+
+                <Swiper
+                  modules={[Pagination, Autoplay]}
+                  spaceBetween={10}
+                  slidesPerView={1}
+                  loop={projects.length > 3}
+                  pagination={{ clickable: true }}
+                  autoplay={{ delay: 6000, disableOnInteraction: false }}
+                  breakpoints={{
+                    640: { slidesPerView: 1 },
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                  }}
+                  onSwiper={setSwiperRef}
+                  className="!pb-12 w-full"
+                >
+                  {projects.map((proj, idx) => (
+                    <SwiperSlide key={proj._id}>
+                      <div className="bg-white shadow-md rounded-md flex flex-col h-[350px] transition-transform hover:scale-[1.02]">
+                        <img
+                          src={proj.image}
+                          alt={proj.title}
+                          className="w-full h-40 object-cover rounded-t-md"
+                        />
+                        <div className="flex flex-col justify-between flex-grow p-3">
+                          <div>
+                            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-700">
+                              {proj.title}
+                            </h3>
+                            <p className="text-sm text-gray-600 mt-1 line-clamp-3">
+                              {proj.description}
+                            </p>
+                          </div>
+                          <div className="pt-3">
+                            <Link to={`/projects/${proj.slug}`}>
+                              <button className="w-full px-3 py-1.5 text-sm font-medium text-white btn-custom-orange rounded hover:shadow-md transition">
+                                {buttonLabels[idx % buttonLabels.length]}
+                              </button>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+
+                <button
+                  onClick={handleNext}
+                  className="hidden xl:flex absolute z-10 items-center justify-center w-10 h-10 bg-white text-[#31aeb5] dark:text-[#d07f00] rounded-full shadow-md transition-colors duration-300 hover:bg-[#31aeb5] dark:hover:bg-[#d07f00] group"
+                  style={{
+                    top: "45%",
+                    right: "-52px",
+                    transform: "translateY(-50%)",
+                  }}
+                  aria-label="Next Slide"
+                >
+                  <span className="group-hover:text-white">→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-custom-light-orange" />
       </section>
 
       <Contact />

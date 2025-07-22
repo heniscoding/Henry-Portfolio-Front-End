@@ -140,12 +140,12 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.4 }}
-          className="mt-10 flex flex-col sm:flex-row sm:justify-center sm:items-center gap-4"
+          className="mt-10 flex flex-col sm:flex-row sm:justify-center sm:items-center gap-3"
         >
           <a
             href="/data/Henry-Alderslade-CV-2024.pdf"
             download
-            className="group px-5 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-purple-500 to-purple-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
+            className="group px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-purple-500 to-purple-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
           >
             <FaFileDownload className="transition-transform duration-300 group-hover:translate-y-1" />
             Download CV
@@ -155,7 +155,7 @@ const Hero = () => {
             href="https://github.com/heniscoding/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group px-5 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-emerald-500 to-emerald-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
+            className="group px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-emerald-500 to-emerald-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
           >
             <FaGithub className="transition-transform duration-300 group-hover:rotate-[15deg]" />
             Visit GitHub
@@ -165,7 +165,7 @@ const Hero = () => {
             href="https://www.instagram.com/henryalderslade"
             target="_blank"
             rel="noopener noreferrer"
-            className="group px-5 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-pink-500 to-pink-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
+            className="group px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-pink-500 to-pink-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
           >
             <FaInstagram className="transition-transform duration-300 group-hover:scale-110" />
             Instagram
@@ -175,7 +175,7 @@ const Hero = () => {
             href="https://x.com/henryalderslade"
             target="_blank"
             rel="noopener noreferrer"
-            className="group px-5 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-sky-500 to-sky-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
+            className="group px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-sky-500 to-sky-700 text-white opacity-90 hover:opacity-100 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
           >
             <FaTwitter className="transition-transform duration-300 group-hover:scale-110" />
             X (Twitter)
