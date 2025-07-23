@@ -20,7 +20,8 @@
     "react-simple-typewriter": "^5.0.1",
     "serve": "^14.2.4",
     "swiper": "^11.2.10",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yet-another-react-lightbox": "^3.25.0"
   },
   "scripts": {
     "start": "react-scripts start",

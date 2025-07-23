@@ -16,7 +16,7 @@ import ProjectDetails from "./components/ProjectDetails";
 import PhotoIndex from "./components/PhotoIndex";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
-import NotFound from "./components/NotFound";  // ← NEW
+import NotFound from "./components/NotFound"; // ← NEW
 
 const Home = () => {
   const location = useLocation();
@@ -47,7 +47,6 @@ const Home = () => {
       <About />
       <ProjectsCarousel ref={projectsRef} />
       <Contact />
-      <Footer />
     </>
   );
 };
@@ -56,16 +55,24 @@ const App = () => {
   return (
     <Router>
       <ScrollToTop />
-      <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects/:slug" element={<ProjectDetails />} />
-        <Route path="/photo-index" element={<PhotoIndex />} />
+      {/* Full height layout */}
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
 
-        {/* Catch-all for any undefined route */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+        {/* Page content takes remaining space */}
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects/:slug" element={<ProjectDetails />} />
+            <Route path="/photo-index" element={<PhotoIndex />} />
+            {/* Catch-all for any undefined route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
     </Router>
   );
 };

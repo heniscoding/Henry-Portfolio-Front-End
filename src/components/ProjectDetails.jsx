@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import Contact from "../components/Contact";
-import Footer from "../components/Footer";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -290,7 +289,6 @@ const ProjectDetails = () => {
       </div>
 
       <Contact />
-      <Footer />
     </>
   );
 };

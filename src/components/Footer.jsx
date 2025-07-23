@@ -9,20 +9,8 @@ const Footer = () => {
           © {new Date().getFullYear()} Henry Alderslade. All Rights Reserved.
         </p>
 
-        {/* Additional Links or Information */}
+        {/* Links Section */}
         <div className="flex space-x-4 mt-4 md:mt-0">
-          {/* <a
-            href="#"
-            className="text-gray-400 hover:text-gray-100 transition-colors"
-          >
-            Privacy Policy
-          </a>
-          <a
-            href="#"
-            className="text-gray-400 hover:text-gray-100 transition-colors"
-          >
-            Terms of Service
-          </a> */}
           <a
             href="https://github.com/heniscoding/"
             target="_blank"
@@ -30,6 +18,12 @@ const Footer = () => {
             className="text-gray-400 hover:text-gray-100 transition-colors"
           >
             GitHub
+          </a>
+          <a
+            href="/photo-index"
+            className="text-gray-400 hover:text-gray-100 transition-colors"
+          >
+            Photos
           </a>
         </div>
       </div>

@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body, #root {
+  height: 100%;
+}
+
 /* Custom Global Styles */
 html {
   scroll-behavior: smooth;
