@@ -5,33 +5,85 @@
 
   <url>
     <loc>https://www.henryalderslade.com/photo-index</loc>
-    <image:image>
-      <image:loc>https://www.henryalderslade.com/photos/henry-alderslade-akyaka-2025.jpg</image:loc>
-      <image:caption>Henry Alderslade in Akyaka June 2025</image:caption>
-    </image:image>
+
     <image:image>
       <image:loc>https://www.henryalderslade.com/photos/henry-alderslade-akyaka-2025.jpg</image:loc>
       <image:caption>Henry Alderslade at a bar in Akyaka June 2025</image:caption>
     </image:image>
+
     <image:image>
       <image:loc>https://www.henryalderslade.com/photos/henry-alderslade-akyaka-river-romp-2025.jpg</image:loc>
       <image:caption>Henry Alderslade on a boat in Akyaka June 2025</image:caption>
     </image:image>
+
     <image:image>
       <image:loc>https://www.henryalderslade.com/photos/henry-alderslade-barcelona-2025.jpg</image:loc>
       <image:caption>Henry Alderslade at Barcelona Airport 2025</image:caption>
     </image:image>
+
     <image:image>
       <image:loc>https://www.henryalderslade.com/photos/henry-alderslade-crystal-palace-2025.jpg</image:loc>
       <image:caption>Henry Alderslade Photography Crystal Palace South London 2025</image:caption>
     </image:image>
+
     <image:image>
       <image:loc>https://www.henryalderslade.com/photos/henry-alderslade-pascha-hanaway-wedding-2025.jpg</image:loc>
       <image:caption>Henry Alderslade with his partner at a wedding in 2025</image:caption>
     </image:image>
+
     <image:image>
       <image:loc>https://www.henryalderslade.com/photos/pascha-henry-tinka-2025.jpg</image:loc>
       <image:caption>Henry Alderslade with his partner Pascha Hanaway and Boston Terrier Tinka 2025</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.henryalderslade.com/photos/Henry-Alderslade-cuppa.jpg</image:loc>
+      <image:caption>Henry Alderslade - Cuppa</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.henryalderslade.com/photos/Henry-Alderslade-Holiday-2023.jpg</image:loc>
+      <image:caption>Henry Alderslade - Holiday 2023</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.henryalderslade.com/photos/Henry-Alderslade-Holiday-Spain.jpg</image:loc>
+      <image:caption>Henry Alderslade - Holiday Spain</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.henryalderslade.com/photos/Henry-Alderslade-Pool.jpg</image:loc>
+      <image:caption>Henry Alderslade - Pool</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.henryalderslade.com/photos/Henry-Alderslade-Unviersity-Parks-Oxford.jpg</image:loc>
+      <image:caption>Henry Alderslade - Unviersity Parks Oxford</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.henryalderslade.com/photos/Henry-and-Pascha.jpg</image:loc>
+      <image:caption>Henry and Pascha</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.henryalderslade.com/photos/Tinka-France-2024.jpg</image:loc>
+      <image:caption>Tinka - France 2024</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.henryalderslade.com/photos/Tinka-Walk.jpg</image:loc>
+      <image:caption>Tinka - Walk</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.henryalderslade.com/photos/Tinka-Face.jpg</image:loc>
+      <image:caption>Tinka - Face</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.henryalderslade.com/photos/Tinka-Graffiti.jpg</image:loc>
+      <image:caption>Tinka Graffiti</image:caption>
     </image:image>
   </url>
 </urlset>
